@@ -1,0 +1,2781 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One Click Stay</title>
+  <!-- Favicons and external resources added as requested -->
+  <script src="https://amadeus.com/etc.clientlibs/clientlibs/granite/jquery.min.js"></script>
+  <script async="async" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Ba919acbd-615c-4739-b30e-566da33d44e8%7D_apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bfd9ef690-7ff1-4af3-94b4-50e86a7167a3%7D_favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B21c39094-b11e-42ed-bfd6-f6dfc8876972%7D_favicon-16x16.png">
+  <link rel="stylesheet" type="text/css" href="https://img06.en25.com/Web/Amadeus/%7B23e3736e-5d4c-4798-a5e3-2f8c4a1047d9%7D_lp_template_form_css.css">
+  <!-- End Favicons and external resources -->
+  <style>
+    /* Amadeus Neue font */
+    @font-face {
+      font-family: 'amadeus_neuebold';
+      src: url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-bold-webfont.eot');
+      src: url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-bold-webfont.eot?#iefix') format('embedded-opentype'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-bold-webfont.woff2') format('woff2'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-bold-webfont.woff') format('woff'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-bold-webfont.ttf') format('truetype'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-bold-webfont.svg#amadeus_neuebold') format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'amadeus_neuelight';
+      src: url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-light-webfont.eot');
+      src: url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-light-webfont.eot?#iefix') format('embedded-opentype'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-light-webfont.woff2') format('woff2'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-light-webfont.woff') format('woff'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-light-webfont.ttf') format('truetype'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-light-webfont.svg#amadeus_neuelight') format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'amadeus_neuemedium';
+      src: url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-medium-webfont.eot');
+      src: url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-medium-webfont.eot?#iefix') format('embedded-opentype'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-medium-webfont.woff2') format('woff2'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-medium-webfont.woff') format('woff'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-medium-webfont.ttf') format('truetype'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-medium-webfont.svg#amadeus_neuemedium') format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'amadeus_neueregular';
+      src: url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-regular-webfont.eot');
+      src: url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-regular-webfont.eot?#iefix') format('embedded-opentype'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-regular-webfont.woff2') format('woff2'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-regular-webfont.woff') format('woff'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-regular-webfont.ttf') format('truetype'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-regular-webfont.svg#amadeus_neuelight') format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    :root {
+      --feature-gap: 30px;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'amadeus_neueregular', Arial, sans-serif;
+      overflow: hidden; /* Ensures no scrolling */
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #f8f8f8; /* Default body background */
+      color: #000835;
+    }
+
+    /* Core Bookblock-like styles for page transitions */
+    .pt-pages {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden; /* Ensure content doesn't spill during transitions */
+        background-color: #f8f8f8; /* Fallback background for the entire slide area */
+    }
+
+    .pt-page {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        visibility: hidden; /* Hidden by default */
+        overflow: hidden;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        z-index: 0; /* Default z-index for inactive pages */
+        background-color: #f8f8f8; /* Default light background for individual pages */
+        background-size: cover; /* Ensure background images cover the entire slide */
+        background-position: center; /* Center the background images */
+    }
+
+    .pt-page-current {
+        visibility: visible;
+        z-index: 1; /* Active page on top of inactive pages */
+    }
+
+    /* Animations for sliding effect (pure transform, no opacity in keyframes) */
+    /* Exiting to left */
+    .pt-page-exit-left { /* Renamed for clarity */
+        -webkit-animation: slideOutLeft 1s both ease-in-out;
+        animation: slideOutLeft 1s both ease-in-out;
+    }
+    @-webkit-keyframes slideOutLeft {
+        0% { -webkit-transform: translateX(0%); }
+        100% { -webkit-transform: translateX(-100%); }
+    }
+    @keyframes slideOutLeft {
+        0% { transform: translateX(0%); }
+        100% { transform: translateX(-100%); }
+    }
+
+    /* Exiting to right */
+    .pt-page-exit-right { /* Renamed for clarity */
+        -webkit-animation: slideOutRight 1s both ease-in-out;
+        animation: slideOutRight 1s both ease-in-out;
+    }
+    @-webkit-keyframes slideOutRight {
+        0% { -webkit-transform: translateX(0%); }
+        100% { -webkit-transform: translateX(100%); }
+    }
+    @keyframes slideOutRight {
+        0% { transform: translateX(0%); }
+        100% { transform: translateX(100%); }
+    }
+
+    /* Entering from left */
+    .pt-page-moveFromLeft {
+        -webkit-animation: slideInLeft 1s ease-in-out both;
+        animation: slideInLeft 1s ease-in-out both;
+    }
+    @-webkit-keyframes slideInLeft {
+        from { -webkit-transform: translateX(-100%); }
+        to { -webkit-transform: translateX(0%); }
+    }
+    @keyframes slideInLeft {
+        from { transform: translateX(-100%); }
+        to { transform: translateX(0%); }
+    }
+
+    /* Entering from right */
+    .pt-page-moveFromRight {
+        -webkit-animation: slideInRight 1s ease-in-out both;
+        animation: slideInRight 1s ease-in-out both;
+    }
+    @-webkit-keyframes slideInRight {
+        from { -webkit-transform: translateX(100%); }
+        to { -webkit-transform: translateX(0%); }
+    }
+    @keyframes slideInRight {
+        from { transform: translateX(100%); }
+        to { transform: translateX(0%); }
+    }
+
+    /* Ensure the entering page is on top during transition */
+    .pt-page-ontop {
+        z-index: 999;
+    }
+
+    .nav-button.left, .nav-button.right {
+      width: 60px;
+      height: 100px;
+      background-color: rgba(233, 233, 233, 0.7);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      z-index: 1000; /* Ensure buttons are always above all pages */
+      overflow: hidden;
+    }
+
+    .nav-button.left {
+      left: 0px;
+    }
+
+    .nav-button.right {
+      right: 0px;
+    }
+
+    .nav-button.left::before, .nav-button.right::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 20%;
+    }
+
+    .nav-button.left::before {
+      background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B51253dcc-d35b-43c4-8974-bdd135376598%7D_left_arrow.png');
+      animation: arrow-move-left 1.5s infinite ease;
+    }
+
+    .nav-button.right::before {
+      background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B4d5eec72-ad28-43b0-a7fa-b44d1ccb0152%7D_right_arrow.png');
+      animation: arrow-move-right 1.5s infinite ease;
+    }
+
+    @keyframes arrow-move-left {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(-6px); }
+      100% { transform: translateX(0); }
+    }
+
+    @keyframes arrow-move-right {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(6px); }
+      100% { transform: translateX(0); }
+    }
+
+    /* Initial state for elements that should be hidden until unlocked */
+    .pt-pages, .top-nav, .nav-button, #page-counter {
+      display: none;
+    }
+    /* Active state to display elements after unlock */
+    .pt-pages.active { /* Only pt-pages is toggled by 'active' class now */
+      display: block;
+    }
+    /* Top nav, nav buttons, and page counter are always visible after unlock */
+    .top-nav.visible {
+        display: flex; /* This is now correctly applied ONLY when 'visible' class is present */
+    }
+    .nav-button.visible, #page-counter.visible {
+        display: block;
+    }
+
+
+    .slide-content-wrapper {
+        max-width: 1000px;
+        margin: 0 auto;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 150px 0 5% 0;
+        box-sizing: border-box;
+    }
+
+    .slide h1 {
+      margin-top: 0;
+      color: #3A8BFF;
+      text-shadow: none !important;
+      opacity: 1 !important;
+      font-size: 2.5em;
+      -webkit-text-stroke: transparent !important;
+      text-stroke: transparent !important;
+      background-clip: border-box !important;
+      -webkit-background-clip: border-box !important;
+    }
+    .section-content-slide h1 {
+      color: white;
+      text-shadow: none !important;
+      opacity: 1 !important;
+      -webkit-text-stroke: transparent !important;
+      text-stroke: transparent !important;
+      background-clip: border-box !important;
+      -webkit-background-clip: border-box !important;
+    }
+    /* Specific background color for dark-themed slides */
+    .section-content-slide,
+    .pt-page[style*="Dark_Sky.png"] { /* For slide 1 and other dark-themed slides */
+        background-color: #000835; /* Dark fallback */
+    }
+    /* .title-slide {
+        background-color: #000835; /* Also dark fallback for title slide */
+    /* } */
+
+    /* New style for dark background slides to make text white */
+    .dark-text-slide h1,
+    .dark-text-slide p,
+    .dark-text-slide ul li,
+    .dark-text-slide strong { /* Added strong for highlight-stat */
+      color: white;
+    }
+
+
+    .slide p, .slide ul li {
+      color: #000835;
+    }
+    .cta-button {
+      display: inline-block;
+      background: #3A8BFF;
+      color: white;
+      padding: 1rem 2rem;
+      margin-top: 2rem;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease; /* Add transition for hover effect */
+    }
+    /* Hover effect for CTA button */
+    .cta-button:hover {
+      background-color: #2a72e0; /* Darker blue on hover */
+    }
+    #page-counter {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white; /* Changed to white */
+      font-size: 0.9rem;
+      z-index: 1000; /* Ensure page counter is always above all pages */
+      text-align: center;
+    }
+    .top-nav {
+      position: absolute;
+      top: 10px;
+      width: 100%;
+      background: transparent;
+      padding: 10px 20px;
+      display: none; /* Corrected: Starts hidden */
+      justify-content: flex-start; /* Align items to the start */
+      align-items: center;
+      z-index: 1001; /* Ensure top nav is always on top of everything */
+      box-sizing: border-box;
+    }
+    .top-nav .nav-left-links { /* New container for left-aligned links */
+        display: flex;
+        align-items: center;
+    }
+    .top-nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem; /* Slightly bigger */
+      margin: 0 12px; /* Increased margin */
+      cursor: pointer;
+    }
+    /* New style for active navigation link */
+    .top-nav a.nav-link-active {
+        text-decoration: underline;
+        text-underline-offset: 5px; /* Adjust as needed for desired spacing */
+        /* You can add more styles here for active state, e.g., font-weight, color */
+    }
+    .top-nav .home-icon { /* Specific style for home icon */
+        height: 28px; /* Bigger home icon */
+        vertical-align: middle;
+        margin-right: 0; /* No text next to it, so no right margin */
+    }
+    .top-nav .menu-icon { /* Style for the new menu icon */
+        height: 18px; /* Same size as home icon */
+        vertical-align: middle;
+    }
+    /* New style for the always-visible logo container */
+    .outpayce-logo-container {
+        position: absolute;
+        top: 10px;
+        right: 20px; /* Position to the far right */
+        z-index: 1002; /* Ensure it's above the nav bar */
+    }
+    .outpayce-logo-container .outpayce-logo-small {
+        height: 40px; /* Bigger logo */
+    }
+    .stats-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .stat-card {
+      background: #C5D5F9;
+      border-left: 4px solid #3A8BFF;
+      padding: 1rem;
+      flex: 1 1 250px;
+      color: #000835;
+    }
+    .highlight-stat {
+      background: #3A8BFF;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 6px;
+      margin-top: 2rem;
+    }
+    .unlock-container {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Baf0c3c06-7eb8-4f7a-88d4-0cd833e8c982%7D_1920_x_1080_Dark_Sky.png');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+    .unlock-container h1 {
+      color: white;
+    }
+    .title-slide {
+      background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Be0e604f8-422f-40ab-a9d8-59e9ee9067a1%7D_a_person_looking_at_the_phone.jpg'); /* Corrected background image */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 0 10%; /* Add padding for content */
+    }
+    .title-slide .outpayce-logo-large {
+      height: 100px; /* Adjusted size */
+      flex-shrink: 0;
+      margin-right: 20px; /* Space between logo and title box */
+    }
+    .title-box {
+      background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Baf0c3c06-7eb8-4f7a-88d4-0cd833e8c982%7D_1920_x_1080_Dark_Sky.png'); /* Dark Sky background image */
+      background-size: cover;
+      background-position: center;
+      padding: 2rem;
+      color: white;
+      max-width: 45%; /* Adjusted max-width */
+      flex-grow: 1;
+      border-radius: 10px;
+      text-align: left; /* Aligned text to left */
+    }
+    .title-box h1 {
+      color: white; /* Ensure heading is white */
+      font-size: 2.8em; /* Adjusted font size */
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+    .title-box p {
+      color: white; /* Ensure paragraph is white */
+      font-size: 1.1em; /* Adjusted font size */
+      line-height: 1.5;
+    }
+
+    .section-content-slide {
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: block;
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .section-layout-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center; /* Vertically centers content on both sides */
+        padding: 150px 5% 5% 5%; /* Reverted left padding to 5% */
+        box-sizing: border-box;
+        height: 100%;
+        width: 100%;
+        max-width: 1200px; /* Added max-width */
+        margin: 0 auto; /* Centered */
+    }
+
+    .section-title-area {
+        width: 35%;
+        padding-right: 30px;
+        box-sizing: border-box;
+        flex-shrink: 0;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+    }
+    .section-content-slide .section-title-area h1 {
+      color: white;
+      margin-bottom: 2rem;
+      font-size: 3.5em;
+      line-height: 1.1;
+    }
+    .section-content-slide .section-title-area p {
+        color: white;
+        font-size: 1.1em;
+        margin-top: 1rem;
+    }
+    .section-content-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* Default 2 columns */
+      gap: 0.8rem; /* Adjusted gap */
+      width: 65%;
+      flex-grow: 1;
+      max-width: 100%;
+    }
+    /* Specific style for 3-column grid layout */
+    .section-content-grid.three-column-grid {
+      grid-template-columns: repeat(3, 1fr); /* 3 columns for this specific grid */
+    }
+
+    /* Base style for section content boxes */
+    .section-content-box {
+      padding: 1rem;
+      border-radius: 0;
+      text-align: left;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100px;
+      color: #000835; /* Changed to dark sky color */
+      font-size: 1.6em; /* Reduced font size by 20% from 2.0em */
+    }
+
+    /* Specific colors for content boxes based on section background */
+    .section-content-slide[style*="Dark_Sky.png"] .section-content-box {
+        background-color: #3A8BFF; /* Light blue for Dark Sky pages */
+    }
+    .section-content-slide[style*="Dark_Sky.png"] .section-content-box:hover {
+        background-color: #2a72e0; /* Darker light blue on hover */
+    }
+
+    .section-content-slide[style*="Forrest_Green.png"] .section-content-box {
+        background-color: #92FF73; /* Vivid Forrest for Forrest Green pages */
+    }
+    .section-content-slide[style*="Forrest_Green.png"] .section-content-box:hover {
+        background-color: #72D953; /* Darker Vivid Forrest on hover */
+    }
+
+    .section-content-slide[style*="Violet.png"] .section-content-box {
+        background-color: #B650FF; /* Vivid Violet for Violet pages */
+    }
+    .section-content-slide[style*="Violet.png"] .section-content-box:hover {
+        background-color: #9A3EE0; /* Darker Vivid Violet on hover */
+    }
+
+    .section-content-slide[style*="Crimson.png"] .section-content-box {
+        background-color: #FF514D; /* Vivid Crimson for Crimson pages */
+    }
+    .section-content-slide[style*="Crimson.png"] .section-content-box:hover {
+        background-color: #E03E3B; /* Darker Vivid Crimson on hover */
+    }
+
+    /* New style for section title pages */
+    .section-intro-page {
+        background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Be0e604f8-422f-40ab-a9d8-59e9ee9067a1%7D_a_person_looking_at_the_phone.jpg'); /* Subway woman image */
+        background-size: cover;
+        background-position: center;
+        color: white; /* Default text color for these pages */
+        display: flex;
+        align-items: center; /* Vertically center the content wrapper */
+        justify-content: flex-start; /* Align content wrapper to the start (left) */
+        padding-left: 0; /* Remove padding to push box to the very left */
+        box-sizing: border-box;
+    }
+    .section-intro-box {
+        padding: 2rem 4rem 2rem 12rem; /* Adjusted padding: top, right, bottom, left */
+        border-radius: 10px;
+        text-align: left;
+        width: 50%;
+        height: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-sizing: border-box;
+        background-size: cover;
+        background-position: center;
+    }
+    .section-intro-box h1 {
+        font-size: 3.5em; /* Larger font for section titles */
+        margin-bottom: 0; /* Remove margin-bottom to make text tighter */
+        line-height: 1.1;
+        color: white; /* Ensure heading is white */
+        white-space: nowrap; /* Keep text on one line if short enough */
+        overflow: hidden; /* Hide overflow */
+        text-overflow: ellipsis; /* Add ellipsis for overflow */
+        font-weight: normal; /* Ensure regular font weight */
+    }
+    /* New class to allow text wrapping for specific h1 elements */
+    .section-intro-box h1.allow-wrap {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: initial;
+    }
+    .section-intro-box p { /* This rule will now be unused as p tags are removed */
+        font-size: 1.1em;
+        line-height: 1.5;
+        color: white; /* Ensure paragraph is white */
+    }
+
+    /* Styles for the new two-column layout on Slide 3 */
+    .slide-content-two-column {
+        display: flex;
+        justify-content: space-between;
+        align-items: center; /* Vertically center the columns */
+        max-width: 1200px; /* Adjust as needed */
+        margin: 0 auto;
+        height: 100%;
+        padding: 0 5%; /* Add some horizontal padding */
+        box-sizing: border-box;
+    }
+
+    .slide-content-two-column .left-column,
+    .slide-content-two-column .right-column {
+        flex: 1; /* Distribute space equally */
+        padding: 20px; /* Add padding within columns */
+        box-sizing: border-box;
+    }
+
+    .slide-content-two-column .left-column {
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Center content vertically in left column */
+        align-items: flex-start; /* Align items to the start (left) */
+    }
+
+    .large-stat-container {
+        margin-bottom: 20px;
+    }
+
+    .stat-pre-text {
+        font-size: 1.2em;
+        color: white; /* Assuming dark background */
+        margin-bottom: 5px;
+    }
+
+    .large-stat {
+        font-family: 'amadeus_neueregular', Arial, sans-serif; /* Changed to regular font */
+        font-size: 4.5em; /* Very large font size */
+        color: white;
+        line-height: 1.1;
+        margin: 0;
+    }
+
+    .small-text-box {
+        background-color: #3A8BFF; /* Blue background */
+        padding: 15px 20px;
+        border-radius: 8px;
+        color: #000835; /* Changed to dark sky color */
+        font-size: 1em;
+        line-height: 1.4;
+        max-width: 80%; /* Control width of this box */
+    }
+    .small-text-box p { /* Ensure paragraph inside box also gets the color */
+        color: #000835;
+    }
+
+
+    .slide-content-two-column .right-column h1 {
+        font-size: 3.5em; /* Large heading */
+        color: white;
+        margin-bottom: 20px;
+        line-height: 1.2;
+    }
+
+    .slide-content-two-column .right-column p {
+        font-size: 1.2em;
+        color: white;
+        line-height: 1.6;
+    }
+
+    /* Styles for the internal flipbook */
+    .flipbook-container {
+        position: relative;
+        width: 100%;
+        height: calc(100% - 150px); /* Adjust height based on header/footer */
+        overflow: hidden;
+        display: none; /* Hidden by default */
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    /* Show flipbook container only when its parent slide is current */
+    .pt-page-current .flipbook-container {
+        display: flex;
+    }
+
+    .flipbook-page {
+        position: absolute; /* All flipbook pages are absolutely positioned */
+        width: 100%;
+        height: 100%;
+        visibility: hidden;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
+        z-index: 0;
+    }
+
+    .flipbook-page .left-content {
+        flex: 1; /* 1/3 width */
+        text-align: left;
+        padding-right: 40px; /* Increased padding */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%; /* Take full height */
+    }
+
+    .flipbook-page .right-image {
+        flex: 2; /* 2/3 width */
+        text-align: right;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%; /* Take full height */
+    }
+
+    .flipbook-page .right-image img {
+        max-width: 100%;
+        max-height: 95%; /* Increased image height */
+        height: auto;
+        border-radius: 8px;
+        object-fit: contain; /* Ensure image is contained within its space */
+    }
+
+
+    .flipbook-page h1 {
+        font-size: 2.8em;
+        margin-bottom: 15px;
+        color: white; /* Ensure text is white for dark background */
+    }
+
+    .flipbook-page p {
+        font-size: 1.1em;
+        line-height: 1.6;
+        color: white; /* Ensure text is white for dark background */
+        max-width: 800px;
+        margin-bottom: 20px;
+    }
+
+    .flipbook-page ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+        max-width: 600px;
+    }
+
+    .flipbook-page ul li {
+        font-size: 1em;
+        margin-bottom: 10px;
+        color: white; /* Ensure text is white for dark background */
+        position: relative;
+        padding-left: 20px;
+    }
+
+    .flipbook-page ul li::before {
+        content: '•';
+        color: #3A8BFF; /* Blue bullet point */
+        font-size: 1.2em;
+        position: absolute;
+        left: 0;
+        top: -2px;
+    }
+
+    .flipbook-nav {
+        position: absolute;
+        bottom: 70px;
+        right: 80px;
+        display: none;
+        justify-content: flex-end;
+        align-items: center;
+        z-index: 10;
+    }
+
+    /* Show flipbook nav only when its parent slide is current */
+    .pt-page-current .flipbook-nav {
+        display: flex;
+    }
+
+    .flipbook-nav .page-dot {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        line-height: 60px;
+        border-radius: 50%;
+        margin: 0 10px;
+        background-color: transparent;
+        color: #3A8BFF;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        font-weight: bold;
+        font-size: 1.8em;
+    }
+
+    .flipbook-nav .page-dot.active-dot {
+        background-color: white;
+        color: #3A8BFF;
+        border: 1px solid white;
+    }
+    
+    /* Styles for the new problem-solution grid on Slide 4 */
+    .problem-solution-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 20px;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    /* Restyled solution-card to remove boxes and match image */
+    .solution-card {
+      background-color: transparent; /* Make background transparent */
+      padding: 0; /* Remove padding */
+      border-radius: 0; /* Remove border-radius */
+      border-left: none; /* Ensure no left border */
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      color: white; /* Default text color for the card */
+      box-shadow: none; /* Remove box shadow */
+      text-align: left; /* Align text left */
+    }
+
+    .solution-card .card-number {
+        font-family: 'amadeus_neuebold', Arial, sans-serif;
+        font-size: 4.5em; /* Slightly larger number */
+        color: #3A8BFF; /* Blue color */
+        margin-bottom: 5px; /* Reduced margin */
+        line-height: 1;
+    }
+
+    .solution-card .card-title {
+        font-family: 'amadeus_neuebold', Arial, sans-serif;
+        font-size: 1.5em;
+        margin-bottom: 10px; /* Reduced margin */
+        color: white; /* White title */
+    }
+
+    .solution-card .card-text {
+        font-size: 1em;
+        line-height: 1.5;
+        margin-bottom: 10px;
+        color: white; /* White text */
+    }
+
+    .solution-card .card-source {
+        font-size: 0.85em;
+        color: #C5D5F9; /* Light blue for source */
+        margin-top: auto;
+    }
+
+    /* New CSS for the left gradient overlay */
+    .left-gradient-overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 100px; /* Adjusted width for the new image */
+        background-size: cover; /* Cover the area */
+        background-repeat: no-repeat;
+        background-position: left center; /* Position to the left and center vertically */
+        z-index: 0;
+    }
+
+    .left-gradient-overlay.dark-sky-effect {
+        background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bfb780706-ad17-4404-865a-5a50641ef132%7D_Outpayce_-_Vertical_Pulse_-_Dark_Sky_Left_border.PNG');
+    }
+
+    .left-gradient-overlay.crimson-effect {
+        background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B01480823-2e0f-4612-a2f4-55ca67ff8263%7D_Outpayce_-_Vertical_Pulse_-_Crimson_Left_Border.PNG');
+    }
+
+
+    /* Responsive adjustments */
+    @media screen and (max-width: 768px) {
+      .pt-pages {
+        height: auto;
+      }
+      .pt-page {
+        position: static;
+        display: block;
+        height: auto;
+      }
+      .nav-button, #page-counter {
+        display: none !important;
+      }
+      .top-nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .outpayce-logo-container {
+        position: static;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+      .outpayce-logo-container .outpayce-logo-small {
+        margin: 0 auto;
+      }
+      .stats-grid {
+        flex-direction: column;
+      }
+      .title-slide {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px 5%;
+      }
+      .title-slide .outpayce-logo-large {
+        margin-right: 0;
+        margin-bottom: 20px;
+      }
+      .title-box {
+        max-width: 100%;
+        margin-top: 1rem;
+      }
+      .section-content-slide {
+        display: block;
+        height: auto;
+      }
+      .section-layout-wrapper {
+        flex-direction: column;
+        align-items: center;
+        padding: 80px 5% 5% 5%;
+        height: auto;
+        max-width: 100%;
+      }
+      .section-content-slide .section-title-area {
+        width: 100%;
+        padding-right: 0;
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      .section-content-slide .section-title-area h1 {
+        font-size: 2.5em;
+      }
+      .section-content-slide .section-content-grid {
+        grid-template-columns: 1fr;
+        width: 100%;
+        max-height: none;
+        height: auto;
+      }
+      .section-content-grid.three-column-grid {
+        grid-template-columns: 1fr;
+      }
+      .section-intro-page {
+        padding-left: 0;
+        justify-content: center;
+      }
+      .section-intro-box {
+        width: 90%;
+        text-align: center;
+        height: auto;
+        padding: 1.5rem 2rem;
+      }
+
+      /* Responsive adjustments for the new two-column layout on Slide 3 */
+      .slide-content-two-column {
+          flex-direction: column;
+          padding-top: 80px;
+          justify-content: flex-start;
+          text-align: center;
+      }
+
+      .slide-content-two-column .left-column,
+      .slide-content-two-column .right-column {
+          width: 100%;
+          padding: 10px;
+          align-items: center;
+      }
+
+      .large-stat {
+          font-size: 3em;
+      }
+
+      .small-text-box {
+          max-width: 90%;
+          margin: 0 auto;
+      }
+
+      .slide-content-two-column .right-column h1 {
+          font-size: 2.5em;
+      }
+
+      /* Responsive adjustments for the internal flipbook */
+      .flipbook-page {
+          flex-direction: column;
+      }
+      .flipbook-page .left-content,
+      .flipbook-page .right-image {
+          width: 100%;
+          padding: 10px 0;
+          text-align: center;
+      }
+      .flipbook-page .left-content ul {
+          text-align: center;
+          padding-left: 0;
+      }
+      .flipbook-page .left-content ul li {
+          padding-left: 0;
+          text-align: center;
+      }
+      .flipbook-page .left-content ul li::before {
+          position: static;
+          margin-right: 5px;
+      }
+      .flipbook-page h1 {
+          font-size: 2em;
+      }
+      .flipbook-page p, .flipbook-page ul li {
+          font-size: 0.9em;
+      }
+      .flipbook-nav {
+          position: static;
+          margin-top: 20px;
+          justify-content: center;
+      }
+      /* Responsive for problem-solution grid */
+      .problem-solution-grid {
+          grid-template-columns: 1fr;
+      }
+
+      /* Specific styles for the new slide 6 layout on mobile */
+      .new-slide-6-layout .top-section-6 {
+          flex-direction: column;
+      }
+      .new-slide-6-layout .left-problem-box {
+          width: 90%;
+          margin-bottom: 20px;
+          padding: 20px;
+          border-radius: 8px;
+      }
+      .new-slide-6-layout .right-challenges-grid {
+          grid-template-columns: 1fr;
+          width: 90%;
+          padding: 0;
+      }
+      .new-slide-6-layout .bottom-call-to-action {
+          font-size: 1.1em;
+          padding: 20px;
+      }
+
+      /* Responsive for Key Benefits Slide (Slide 11) */
+      .key-benefits-layout, .key-features-layout-new { /* Apply to new features layout too */
+        flex-direction: column;
+        padding-top: 80px !important;
+        align-items: center;
+        text-align: center;
+      }
+
+      .key-benefits-left, .key-features-left-new { /* Apply to new features left column too */
+        width: 100%;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+
+      .key-benefits-left h1, .key-features-left-new h1 { /* Apply to new features left column h1 too */
+        font-size: 2.5em;
+      }
+
+      .key-benefits-right, .key-features-right-new { /* Apply to new features right column too */
+        width: 90%;
+        padding-left: 0;
+      }
+
+      .benefit-item, .feature-item-new { /* Apply to new feature item too */
+        margin-bottom: 15px;
+      }
+
+      .benefit-overlay-content {
+          position: static !important;
+          height: auto !important;
+          transform: translateY(0) !important;
+          opacity: 1 !important;
+          visibility: visible !important;
+          padding-top: 15px;
+          padding-bottom: 15px;
+      }
+      .benefit-item .benefit-content-hidden {
+          display: none;
+      }
+    }
+
+    /* New styles for Slide 6 specific elements */
+    .new-slide-6-layout {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 80px 5% 20px 5%;
+      box-sizing: border-box;
+    }
+
+    .new-slide-6-layout .top-section-6 {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      width: 100%;
+      max-width: 1200px;
+      margin-bottom: 40px;
+    }
+
+    .new-slide-6-layout .left-problem-box {
+      background-color: #3A8BFF;
+      color: #000835;
+      padding: 30px;
+      border-radius: 8px;
+      width: 35%;
+      box-sizing: border-box;
+      flex-shrink: 0;
+      font-size: 1.2em;
+      line-height: 1.6;
+      text-align: left;
+    }
+    .new-slide-6-layout .left-problem-box p {
+        color: #000835;
+        margin: 0;
+        font-weight: bold;
+    }
+
+
+    .new-slide-6-layout .right-challenges-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      width: 60%;
+      box-sizing: border-box;
+      padding-left: 20px;
+    }
+
+    .new-slide-6-layout .challenge-card {
+      background-color: #000835;
+      padding: 20px;
+      border-radius: 8px;
+      color: white;
+      text-align: left;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .new-slide-6-layout .challenge-card h2 {
+      font-family: 'amadeus_neuebold', Arial, sans-serif;
+      font-size: 1.5em;
+      color: white;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .new-slide-6-layout .challenge-card p {
+      font-size: 0.95em;
+      line-height: 1.5;
+      color: #C5D5F9;
+      margin-bottom: 15px;
+    }
+
+    .new-slide-6-layout .challenge-card .challenge-source {
+      font-size: 0.8em;
+      color: #C5D5F9;
+      margin-top: auto;
+      display: block;
+    }
+
+    .new-slide-6-layout .bottom-call-to-action {
+      font-family: 'amadeus_neuebold', Arial, sans-serif;
+      font-size: 1.2em;
+      color: white;
+      text-align: center;
+      width: 100%;
+      max-width: 1200px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .new-slide-6-layout .bottom-call-to-action h1 {
+        color: white;
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    /* New styles for Key Benefits Slide (Slide 11) */
+    .key-benefits-layout {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      padding: 100px 5% 5% 5%;
+      box-sizing: border-box;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .key-benefits-left {
+      width: 35%;
+      flex-shrink: 0;
+      text-align: left;
+      padding-right: 30px;
+      box-sizing: border-box;
+    }
+
+    .key-benefits-left h1 {
+      font-size: 3.5em;
+      color: white;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    .key-benefits-right {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background-color: #9A3EE0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .benefit-item {
+      color: white;
+      border: 1px solid white;
+      margin-bottom: -1px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .benefit-item:first-child {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    .benefit-item:last-child {
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    /* Specific background colors for benefits 2 and 4 */
+    .key-benefits-right .benefit-item:nth-child(2) .benefit-header,
+    .key-benefits-right .benefit-item:nth-child(2) .benefit-content-hidden {
+        background-color: #E4C7FF !important; /* Added !important */
+    }
+    .key-benefits-right .benefit-item:nth-child(4) .benefit-header,
+    .key-benefits-right .benefit-item:nth-child(4) .benefit-content-hidden {
+        background-color: #E4C7FF !important; /* Added !important */
+    }
+
+    .benefit-header {
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      cursor: pointer;
+      font-family: 'amadeus_neuemedium', Arial, sans-serif;
+      font-size: 1.2em;
+      background-color: #B650FF;
+      transition: background-color 0.3s ease;
+      position: relative;
+      z-index: 3;
+    }
+
+    .benefit-header:hover {
+      background-color: #9A3EE0;
+    }
+
+    .benefit-number {
+      font-family: 'amadeus_neuebold', Arial, sans-serif;
+      font-size: 1.5em;
+      color: white;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+
+    .benefit-title {
+      flex-grow: 1;
+      color: white;
+    }
+
+    .toggle-icon {
+      font-size: 1.8em;
+      font-weight: bold;
+      margin-left: 10px;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .benefit-item.expanded .toggle-icon {
+      transform: rotate(45deg);
+    }
+
+    /* Original benefit content, now hidden by default and managed by JS */
+    .benefit-content-hidden {
+      display: none;
+    }
+
+    /* New overlay content area */
+    .benefit-overlay-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #9A3EE0;
+        z-index: 5;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(100%);
+        transition: transform 0.5s ease-out, opacity 0.5s ease-out, visibility 0s 0.5s;
+        padding: 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        color: white;
+    }
+
+    .benefit-overlay-content.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        transition: transform 0.5s ease-out, opacity 0.5s ease-out, visibility 0s;
+    }
+
+    .benefit-overlay-content .close-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 2em;
+        cursor: pointer;
+        z-index: 6;
+    }
+    .benefit-overlay-content h2 {
+        font-family: 'amadeus_neuemedium', Arial, sans-serif;
+        font-size: 2em;
+        margin-bottom: 15px;
+        color: white;
+    }
+    .benefit-overlay-content p {
+        font-size: 1.1em;
+        line-height: 1.6;
+        color: white;
+    }
+
+
+    /* Specific style for the video container on Slide 8 */
+    .video-container {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        aspect-ratio: 16 / 9;
+        background-color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .video-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    /* New styles for Key Features Slide (Slide 10) - NEW LAYOUT */
+    .key-features-layout-new {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      padding: 100px 5% 5% 5%;
+      box-sizing: border-box;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .key-features-left-new {
+      width: 35%;
+      flex-shrink: 0;
+      text-align: left;
+      padding-right: 30px;
+      box-sizing: border-box;
+    }
+
+    .key-features-left-new h1 {
+      font-size: 3.5em;
+      color: white;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    .key-features-left-new .subtitle {
+      font-size: 1.1em;
+      color: white;
+      margin-top: 1rem;
+      line-height: 1.4;
+    }
+
+    .key-features-right-new {
+      width: 60%;
+      display: flex; /* Changed to flex */
+      flex-wrap: wrap; /* Allow items to wrap to next line */
+      justify-content: center; /* Center items in each line */
+      gap: var(--feature-gap); /* Use CSS variable for gap */
+      overflow: hidden;
+    }
+
+    .feature-item-new {
+      color: white; /* Text color remains white for contrast */
+      padding: 0; /* Removed padding to reduce perceived "box" */
+      display: flex;
+      flex-direction: column; /* Stack icon and text vertically */
+      align-items: center; /* Center content horizontally within grid cell */
+      text-align: center; /* Center text */
+      box-sizing: border-box;
+      /* Default for 3 items per row, accounting for gap */
+      flex: 0 0 calc((100% - 2 * var(--feature-gap)) / 3);
+      max-width: calc((100% - 2 * var(--feature-gap)) / 3);
+    }
+
+    .feature-item-new .feature-icon {
+        height: 60px; /* Increased icon size */
+        width: auto;
+        margin-right: 0; /* Removed horizontal margin */
+        margin-bottom: 15px; /* Added vertical space below icon */
+        flex-shrink: 0;
+    }
+
+    .feature-item-new .feature-content {
+        flex-grow: 1;
+    }
+
+    .feature-item-new h2 {
+      font-family: 'amadeus_neuemedium', Arial, sans-serif;
+      font-size: 1.5em; /* Adjusted font size */
+      color: white;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .feature-item-new p {
+      font-size: 1em; /* Adjusted font size */
+      line-height: 1.5;
+      color: #C5D5F9;
+      margin-bottom: 0;
+    }
+
+    /* For the 4th and 5th items to be 2 per row and centered */
+    .key-features-right-new .feature-item-new:nth-child(4),
+    .key-features-right-new .feature-item-new:nth-child(5) {
+      flex: 0 0 calc((100% - var(--feature-gap)) / 2); /* For 2 items per row */
+      max-width: calc((100% - var(--feature-gap)) / 2);
+      /* Add margin-top to separate from the row above */
+      margin-top: var(--feature-gap);
+    }
+
+    /* Testimonial Styles */
+    .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .testimonial-video-item {
+        background-color: #000835;
+        border-radius: 10px;
+        overflow: hidden;
+        aspect-ratio: 16 / 9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .testimonial-video-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .testimonial-quote-item {
+        background-color: #B650FF;
+        padding: 30px;
+        border-radius: 10px;
+        color: white;
+        font-style: italic;
+        line-height: 1.6;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .testimonial-quote-item p {
+        margin-bottom: 15px;
+        font-size: 1.1em;
+        color: white;
+    }
+
+    .testimonial-quote-item .author {
+        font-weight: bold;
+        font-style: normal;
+        font-size: 1em;
+        color: #000835;
+        text-align: right;
+    }
+
+    /* Responsive adjustments for Key Features Slide (Slide 10) */
+    @media screen and (max-width: 768px) {
+      .key-features-layout-new {
+        flex-direction: column;
+        padding-top: 80px !important;
+        align-items: center;
+        text-align: center;
+      }
+      .key-features-left-new {
+        width: 100%;
+        margin-bottom: 30px;
+        text-align: center;
+        padding-right: 0;
+      }
+      .key-features-left-new h1 {
+        font-size: 2.5em;
+      }
+      .key-features-right-new {
+        width: 90%;
+        padding-left: 0;
+        grid-template-columns: 1fr; /* Single column for mobile */
+        gap: 20px;
+      }
+      .feature-item-new {
+        margin-bottom: 0;
+        padding: 10px 0;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        flex: 0 0 100%; /* Full width on mobile */
+        max-width: 100%;
+      }
+      .feature-item-new .feature-icon {
+        height: 40px;
+        margin-bottom: 10px;
+      }
+      .feature-item-new h2 {
+        font-size: 1.2em;
+      }
+      .feature-item-new p {
+        font-size: 0.9em;
+      }
+      /* Ensure the 4th and 5th items also go full width on mobile */
+      .key-features-right-new .feature-item-new:nth-child(4),
+      .key-features-right-new .feature-item-new:nth-child(5) {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-top: 0; /* Remove margin-top on mobile */
+      }
+    }
+
+    /* Styles for the new "How We Achieve Success" layout */
+    .how-we-achieve-success-layout {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding: 100px 5% 5% 5%;
+        box-sizing: border-box;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .how-we-achieve-success-layout h1 {
+        font-size: 2.8em; /* Smaller title */
+        color: white;
+        margin-bottom: 15px;
+        text-align: center;
+        line-height: 1.1;
+    }
+
+    .how-we-achieve-success-layout .subtitle {
+        font-size: 1em; /* Smaller subtitle */
+        color: white;
+        margin-bottom: 40px;
+        text-align: center;
+        line-height: 1.4;
+    }
+
+    .how-we-achieve-success-content { /* New container for the numbers and text */
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start; /* Align text to top within each column */
+        width: 100%;
+        gap: 30px; /* Space between columns */
+    }
+
+    .how-we-achieve-success-item {
+        flex: 1; /* Distribute space evenly */
+        text-align: left;
+        color: white;
+        padding: 10px; /* Add some padding for text */
+        box-sizing: border-box;
+    }
+
+    .how-we-achieve-success-item .item-number {
+        font-family: 'amadeus_neueregular', Arial, sans-serif; /* Regular font for numbers */
+        color: #FF514D; /* Vivid Crimson for numbers */
+        line-height: 1;
+        margin-bottom: 15px;
+        display: block; /* Make it a block element to control margin */
+    }
+
+    .how-we-achieve-success-item .item-number.number-1 {
+        font-size: 6em; /* Smaller number */
+    }
+
+    .how-we-achieve-success-item .item-number.number-2 {
+        font-size: 9em; /* Even bigger for number 2 */
+    }
+
+    .how-we-achieve-success-item .item-number.number-3 {
+        font-size: 6em; /* Smaller number */
+    }
+
+    .how-we-achieve-success-item h2 {
+        font-family: 'amadeus_neuebold', Arial, sans-serif;
+        font-size: 1.3em; /* Smaller h2 */
+        color: white;
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+
+    .how-we-achieve-success-item p {
+        font-size: 0.9em; /* Smaller p */
+        line-height: 1.5;
+        color: #C5D5F9; /* Lighter text for content */
+        margin-bottom: 0;
+    }
+
+
+    /* Specific styles for the "Through our Trusted Partner" slide (Slide 18) */
+    .trusted-partner-layout {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding: 100px 5% 5% 5%;
+        box-sizing: border-box;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .trusted-partner-layout h1 {
+        font-size: 2.8em; /* Adjusted size */
+        color: white;
+        margin-bottom: 10px;
+        text-align: center;
+        line-height: 1.1;
+    }
+
+    .trusted-partner-layout .subtitle {
+        font-size: 1em; /* Adjusted size */
+        color: white;
+        margin-bottom: 30px;
+        text-align: center;
+        line-height: 1.4;
+    }
+
+    .trusted-partner-layout .amadeus-logo {
+        height: 80px; /* Adjust size as needed */
+        margin-bottom: 40px;
+        object-fit: contain;
+    }
+
+    .trusted-partner-stats {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+
+    .trusted-partner-stat-item {
+        text-align: center;
+        margin: 15px;
+    }
+
+    .trusted-partner-stat-item .stat-value {
+        font-family: 'amadeus_neueregular', Arial, sans-serif; /* Changed to regular font */
+        font-size: 4em; /* Much smaller */
+        color: #FF514D; /* Vivid Crimson for stats */
+        line-height: 1;
+        margin-bottom: 5px;
+    }
+
+    .trusted-partner-stat-item .stat-label {
+        font-size: 1em; /* Adjusted size */
+        color: white;
+    }
+
+    /* Styles for the two-column contact form */
+    .contact-form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px; /* Space between columns and rows */
+      width: 100%;
+      max-width: 700px; /* Adjust max-width as needed */
+      margin: 0 auto; /* Center the form */
+    }
+
+    .contact-form-grid .full-width {
+      grid-column: 1 / -1; /* Make elements span full width */
+    }
+
+    /* Hover effect for the submit button on the contact form */
+    .contact-form-grid .cta-button:hover {
+      background-color: #FF514D; /* Vivid crimson on hover */
+    }
+
+    /* Responsive adjustments for new "How We Achieve Success" layout */
+    @media screen and (max-width: 768px) {
+      .how-we-achieve-success-layout {
+        padding-top: 80px !important;
+      }
+      .how-we-achieve-success-layout h1 {
+        font-size: 2.5em;
+      }
+      .how-we-achieve-success-content {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .how-we-achieve-success-item {
+        padding: 0; /* Remove padding on mobile for these items */
+      }
+      .how-we-achieve-success-item .item-number.number-1,
+      .how-we-achieve-success-item .item-number.number-2,
+      .how-we-achieve-success-item .item-number.number-3 {
+        font-size: 4em; /* Adjust size for mobile */
+      }
+      .how-we-achieve-success-item h2 {
+        font-size: 1.2em;
+      }
+      .how-we-achieve-success-item p {
+        font-size: 0.9em;
+      }
+
+      .trusted-partner-layout {
+        padding-top: 80px !important;
+      }
+      .trusted-partner-layout h1 {
+        font-size: 2.5em;
+      }
+      .trusted-partner-stats {
+        flex-direction: column;
+      }
+      .trusted-partner-stat-item {
+        margin: 10px 0;
+      }
+      .trusted-partner-stat-item .stat-value {
+        font-size: 3em;
+      }
+
+      /* Responsive for contact form */
+      .contact-form-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        padding: 0 20px; /* Add horizontal padding */
+      }
+    }
+
+  </style>
+  <!-- Preload key background images for smoother loading -->
+  <link rel="preload" as="image" href="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Be0e604f8-422f-40ab-a9d8-59e9ee9067a1%7D_a_person_looking_at_the_phone.jpg">
+  <link rel="preload" as="image" href="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Baf0c3c06-7eb8-4f7a-88d4-0cd833e8c982%7D_1920_x_1080_Dark_Sky.png">
+  <link rel="preload" as="image" href="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B8c895f85-1de0-4f8e-9bce-be644a252d05%7D_1920_x_1080_Forrest_Green.png">
+  <link rel="preload" as="image" href="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B573208f0-8249-43c4-bdc5-fc4ba62840cd%7D_simon-zhu-4hluhoRJokI-unsplash.jpg">
+  <link rel="preload" as="image" href="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B83fa9be1-2598-46f8-acb5-673b170fa981%7D_1920_x_1080_Violet.png">
+  <link rel="preload" as="image" href="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B8a9ed5c6-4baa-44be-bf54-53bc5949e87f%7D_1920_x_1080_Crimson.png">
+  <link rel="preload" as="image" href="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bfb780706-ad17-4404-865a-5a50641ef132%7D_Outpayce_-_Vertical_Pulse_-_Dark_Sky_Left_border.PNG">
+  <link rel="preload" as="image" href="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B01480823-2e0f-4612-a2f4-55ca67ff8263%7D_Outpayce_-_Vertical_Pulse_-_Crimson_Left_Border.PNG">
+</head>
+<body>
+
+<div class="unlock-container" id="unlock">
+  <h1>Access the One Click Stay eBook</h1>
+  <p>Please complete the form in order to access the eBook</p>
+  <button onclick="unlockContent()" class="cta-button">Submit form</button>
+</div>
+
+<!-- Always visible Outpayce Logo -->
+<div class="outpayce-logo-container">
+    <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bfdb26f48-a602-4444-a7f0-be5efec77ab7%7D_Outpayce_secondary_logo_white_solid.png" alt="Outpayce Logo" class="outpayce-logo-small">
+</div>
+
+<!-- Top Navigation Bar (hidden until unlocked) -->
+<div class="top-nav">
+    <div class="nav-left-links"> <!-- Wrapper for left-aligned links -->
+        <a onclick="goToSlide(0)" class="home-link">
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bdc1643f1-2bec-41ed-b891-d9d3b7600e75%7D_7-home.png" alt="Home icon" aria-hidden="true" class="home-icon"/>
+        </a>
+        <a onclick="goToSlide(1)">
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Baefec152-6d9f-4509-9f3d-bdc351d009d2%7D_Menu_icon.png" alt="Menu" aria-hidden="true" class="menu-icon"/>
+        </a> <!-- New button for TOC with icon -->
+        <a onclick="goToSlide(2)" data-nav-section="payments-industry">The Payments Industry</a>
+        <a onclick="goToSlide(6)" data-nav-section="one-click-stay">One Click Stay</a>
+        <a onclick="goToSlide(16)" data-nav-section="how-we-achieve-success">How We Achieve Success</a>
+        <a onclick="goToSlide(19)" data-nav-section="talk-to-us">Talk to Us</a>
+    </div>
+</div>
+
+<!-- Navigation Buttons (now always visible after unlock) -->
+<button class="nav-button left" onclick="prevArrow()"></button>
+<button class="nav-button right" onclick="nextArrow()"></button>
+<div id="page-counter"></div>
+
+<div class="pt-pages">
+  <!-- Slide 0: Title Slide -->
+  <div class="pt-page title-slide pt-page-current">
+    <div class="slide-content-wrapper" style="flex-direction: row; justify-content: space-between; align-items: center;">
+      <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bfdb26f48-a602-4444-a7f0-be5efec77ab7%7D_Outpayce_secondary_logo_white_solid.png" alt="Outpayce Logo" class="outpayce-logo-large">
+      <div class="title-box">
+        <h1>Turn Payments into Profit</h1>
+        <p>The Power of Outpayce B2B Wallet. A smart, secure, and profitable payment solution for travel sellers.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 1: NEW - Global Table of Contents -->
+  <div class="pt-page section-content-slide" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Baf0c3c06-7eb8-4f7a-88d4-0cd833e8c982%7D_1920_x_1080_Dark_Sky.png');">
+    <div class="section-layout-wrapper">
+      <div class="section-title-area">
+        <h1>Contents</h1>
+        <p>Navigate through the key sections of the One Click Stay eBook.</p>
+      </div>
+      <div class="section-content-grid">
+        <div class="section-content-box" onclick="goToSlide(2)">The Payments Industry</div>
+        <div class="section-content-box" onclick="goToSlide(6)">One Click Stay</div>
+        <div class="section-content-box" onclick="goToSlide(16)">How We Achieve Success</div>
+        <div class="section-content-box" onclick="goToSlide(19)">Talk to Us</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 2: NEW - The Payments Industry: Section Title Page -->
+  <div class="pt-page section-intro-page">
+    <div class="section-intro-box" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Baf0c3c06-7eb8-4f7a-88d4-0cd833e8c982%7D_1920_x_1080_Dark_Sky.png');">
+      <h1 class="allow-wrap">Industry Challenges</h1>
+    </div>
+  </div>
+
+  <!-- Slide 3: Original "1.2 Trends Are Soaring" - REDESIGNED -->
+  <div class="pt-page dark-text-slide" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Baf0c3c06-7eb8-4f7a-88d4-0cd833e8c982%7D_1920_x_1080_Dark_Sky.png');">
+    <div class="slide-content-two-column">
+      <div class="left-column">
+        <div class="large-stat-container">
+          <p class="stat-pre-text">Are expected to reach</p>
+          <h2 class="large-stat">US$38.07tn <br>by 2030</h2>
+        </div>
+        <div class="small-text-box">
+          <p>The value of virtual card payments will grow 235 percent by 2029, rising from $5.2 trillion in 2025 to more than $17.4 trillion.</p>
+        </div>
+      </div>
+      <div class="right-column">
+        <h1>Digital payments <br>are soaring</h1>
+        <p>Driven by business digitalization, customer convenience, and the need for speed, online payments are on the rise - and show no sign of slowing down.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 4: New content from image_a1ce05.png - RESTYLED -->
+  <div class="pt-page dark-text-slide" style="background-color: #000835;">
+    <div class="slide-content-wrapper" style="padding: 20px 5% 20px 120px; justify-content: center; max-width: 1400px; position: relative;">
+      <div class="left-gradient-overlay dark-sky-effect"></div>
+      <div class="problem-solution-grid">
+        <div class="solution-card">
+          <div class="card-number">1</div>
+          <div class="card-title">Corporate Adoption</div>
+          <div class="card-text">"Over 70% of large enterprises plan to increase their use of virtual cards for supplier payments by 2026."</div>
+          <div class="card-source">Source: Visa – The Rise and Staying Power of Virtual Cards for B2B.</div>
+        </div>
+        <div class="solution-card">
+          <div class="card-number">2</div>
+          <div class="card-title">Efficiency Gains</div>
+          <div class="card-text">"Companies using virtual cards report up to 60% faster reconciliation and *30% fewer payment errors."</div>
+          <div class="card-source">Source: Omega Venture Partners.</div>
+        </div>
+        <div class="solution-card">
+          <div class="card-number">3</div>
+          <div class="card-title">Security Advantage</div>
+          <div class="card-text">"Virtual cards reduce fraud risk by up to 80% compared to traditional corporate cards."</div>
+          <div class="card-source">Source: American Express – Virtual Cards: The Future of B2B Payments.</div>
+        </div>
+        <div class="solution-card">
+          <div class="card-number">4</div>
+          <div class="card-title">Environmental Impact</div>
+          <div class="card-text">"Digital payments can reduce paper usage by over 90%, supporting corporate sustainability goals."</div>
+          <div class="card-source">Source: Omega Venture Partners</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 5: NEW - The Payments Industry: An Introduction to One Click Stay (Updated to new content) -->
+  <div class="pt-page dark-text-slide" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Baf0c3c06-7eb8-4f7a-88d4-0cd833e8c982%7D_1920_x_1080_Dark_Sky.png');">
+    <div class="slide-content-wrapper new-slide-6-layout">
+      <div class="top-section-6">
+        <div class="left-problem-box">
+          <p>Despite the $38 trillion surge in digital payments, travel sellers are still lagging—charging more, paying more, and frustrating guests with fragmented, slow, and error-prone systems.</p>
+        </div>
+        <div class="right-challenges-grid">
+          <div class="challenge-card">
+            <h2>Efficiency is lost.</h2>
+            <p>More than 60% of global travel companies say manual payment and reconciliation processes are eating into their margins.</p>
+            <span class="challenge-source">Source: BusinessWire, 2024</span>
+          </div>
+          <div class="challenge-card">
+            <h2>Compliance is tough.</h2>
+            <p>Almost 70% of travel sellers still lack automated payment systems, putting them at risk of fraud and non-compliance.</p>
+            <span class="challenge-source">Source: Travel Tech Show, 2024</span>
+          </div>
+          <div class="challenge-card">
+            <h2>Margins are under pressure.</h2>
+            <p>Banks charge an average 2% FX fee for cross-border payments – plus high insurance costs and fraud exposure when using physical cards.</p>
+            <span class="challenge-source">Source: Amadeus</span>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-call-to-action">
+        <h1>Here is where B2B Wallet can make a difference</h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- START MOVED SECTION: One Click Stay -->
+  <!-- Slide 6: NEW - Section: One Click Stay - Section Title Page (formerly Slide 10) -->
+  <div class="pt-page section-intro-page">
+    <div class="section-intro-box" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B2d8f0256-545a-4a0a-b344-df3cb670447d%7D_GettyImages-1262875748.png');">
+      <h1 style="background-image: none;">One Click Stay</h1>
+    </div>
+  </div>
+
+  <!-- Slide 7: NEW - One Click Stay: What is One Click Stay? (Video Page) -->
+  <div class="pt-page dark-text-slide" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B83fa9be1-2598-46f8-acb5-673b170fa981%7D_1920_x_1080_Violet.png');">
+    <div class="slide-content-wrapper" style="padding: 5% 5%; justify-content: center;">
+      <div class="video-container">
+        <img src="https://placehold.co/900x506/000000/FFFFFF?text=Placeholder+Video" alt="Placeholder Video">
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 8: NEW - One Click Stay: How can you benefit from B2B Wallet? (New Subtitle Page) -->
+  <div class="pt-page section-intro-page">
+    <div class="section-intro-box" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B83fa9be1-2598-46f8-acb5-673b170fa981%7D_1920_x_1080_Violet.png');">
+      <h1 class="allow-wrap">How can you benefit from B2B Wallet?</h1>
+    </div>
+  </div>
+
+  <!-- Slide 9: NEW - Key Features Slide (formerly Slide 9) -->
+  <div class="pt-page dark-text-slide" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B83fa9be1-2598-46f8-acb5-673b170fa981%7D_1920_x_1080_Violet.png');">
+    <div class="slide-content-wrapper key-features-layout-new">
+      <div class="key-features-left-new">
+        <h1>Key Features</h1>
+        <p class="subtitle">A multi-currency payments hub that helps travel agencies pay any supplier with virtual cards.</p>
+      </div>
+      <div class="key-features-right-new">
+        <div class="feature-item-new">
+          <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B0b87b6a2-9ccd-4608-9a7c-e2a09426d175%7D_icon_clock.png" alt="Icon" class="feature-icon">
+          <div class="feature-content">
+            <h2>Pay any Supplier</h2>
+            <p>• One user solution for all suppliers – airlines, hotels, and more.</p>
+            <p>• Single-use virtual cards for extra control.</p>
+            <p>• No hidden fees, no physical cards needed.</p>
+          </div>
+        </div>
+        <div class="feature-item-new">
+          <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B0b87b6a2-9ccd-4608-9a7c-e2a09426d175%7D_icon_clock.png" alt="Icon" class="feature-icon">
+          <div class="feature-content">
+            <h2>Multiple payment options</h2>
+            <p>• 40+ card types: prepaid, debit, and credit.</p>
+            <p>• Support for 40+ currencies.</p>
+            <p>• One wallet to manage everything.</p>
+          </div>
+        </div>
+        <div class="feature-item-new">
+          <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B0b87b6a2-9ccd-4608-9a7c-e2a09426d175%7D_icon_clock.png" alt="Icon" class="feature-icon">
+          <div class="feature-content">
+            <h2>Earn More, Spend Less</h2>
+            <p>• Get rebates on every transaction.</p>
+            <p>• Reduce FX and operational costs.</p>
+          </div>
+        </div>
+        <div class="feature-item-new">
+          <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B0b87b6a2-9ccd-4608-9a7c-e2a09426d175%7D_icon_clock.png" alt="Icon" class="feature-icon">
+          <div class="feature-content">
+            <h2>Secure Payments</h2>
+            <p>• Full fraud and supplier default protection.</p>
+            <p>• Custom spending limits and card controls.</p>
+            <p>• PCI-compliant for peace of mind at no extra cost.</p>
+          </div>
+        </div>
+        <div class="feature-item-new">
+          <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B0b87b6a2-9ccd-4608-9a7c-e2a09426d175%7D_icon_clock.png" alt="Icon" class="feature-icon">
+          <div class="feature-content">
+            <h2>Automate & Optimize</h2>
+            <p>• Automate payment and reconciliation.</p>
+            <p>• Smart payment selection.</p>
+            <p>• No system integration needed to get started.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 10: NEW - Key Benefits Slide (formerly Slide 10) -->
+  <div class="pt-page dark-text-slide" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B83fa9be1-2598-46f8-acb5-673b170fa981%7D_1920_x_1080_Violet.png');">
+    <div class="slide-content-wrapper key-benefits-layout">
+      <div class="key-benefits-left">
+        <h1>Key Benefits</h1>
+      </div>
+      <div class="key-benefits-right">
+        <!-- Overlay content area -->
+        <div class="benefit-overlay-content">
+            <button class="close-button" onclick="closeBenefitOverlay()">+</button>
+            <h2 id="overlay-title"></h2>
+            <p id="overlay-text"></p>
+        </div>
+
+        <!-- Benefit Item 1 -->
+        <div class="benefit-item">
+          <div class="benefit-header" data-benefit-id="1">
+            <span class="benefit-number">1</span>
+            <span class="benefit-title">Financial Gains</span>
+            <span class="toggle-icon">+</span>
+          </div>
+          <div class="benefit-content-hidden">
+            <p>One Click Stay helps you achieve significant financial gains by reducing operational costs, minimizing payment errors, and optimizing foreign exchange fees. Our automated systems ensure that every transaction is processed efficiently, leading to direct savings and improved profitability for your business.</p>
+          </div>
+        </div>
+        <!-- Benefit Item 2 -->
+        <div class="benefit-item">
+          <div class="benefit-header" data-benefit-id="2">
+            <span class="benefit-number">2</span>
+            <span class="benefit-title">Operational Efficiency</span>
+            <span class="toggle-icon">+</span>
+          </div>
+          <div class="benefit-content-hidden">
+            <p>Streamline your entire payment workflow with One Click Stay. From automated virtual card generation to real-time tracking and reconciliation, our solution eliminates manual tasks, reduces administrative burden, and frees up your team to focus on more strategic activities. This leads to faster processing times and enhanced overall productivity.</p>
+          </div>
+        </div>
+        <!-- Benefit Item 3 -->
+        <div class="benefit-item">
+          <div class="benefit-header" data-benefit-id="3">
+            <span class="benefit-number">3</span>
+            <span class="benefit-title">Risk Management & Compliance</span>
+            <span class="toggle-icon">+</span>
+          </div>
+          <div class="benefit-content-hidden">
+            <p>Mitigate fraud risks and ensure full compliance with industry regulations through One Click Stay's robust security features. Our platform provides enhanced control over spending, detailed audit trails, and adherence to global financial standards, giving you peace of mind and protecting your business from potential threats.</p>
+          </div>
+        </div>
+        <!-- Benefit Item 4 -->
+        <div class="benefit-item">
+          <div class="benefit-header" data-benefit-id="4">
+            <span class="benefit-number">4</span>
+            <span class="benefit-title">Global Acceptance & Reach</span>
+            <span class="toggle-icon">+</span>
+          </div>
+          <div class="benefit-content-hidden">
+            <p>Expand your business reach with seamless international payments. One Click Stay supports multi-currency transactions and offers access to a vast global network of payment providers, enabling you to conduct business effortlessly across borders. This broad acceptance ensures your operations are never limited by geographical boundaries.</p>
+          </div>
+        </div>
+        <!-- Benefit Item 5 -->
+        <div class="benefit-item">
+          <div class="benefit-header" data-benefit-id="5">
+            <span class="benefit-number">5</span>
+            <span class="benefit-title">Maximizing Value Through Optimization</span>
+            <span class="toggle-icon">+</span>
+          </div>
+          <div class="benefit-content-hidden">
+            <p>One Click Stay is designed to help you maximize value at every step of the payment process. By optimizing payment flows, reducing hidden costs, and providing comprehensive analytics, our solution empowers you to make informed decisions that drive profitability and ensure long-term financial health for your travel business.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 11: Automate the entire payment journey (formerly Slide 11) - NOW WITH INTERNAL FLIPBOOK -->
+  <div class="pt-page dark-text-slide" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B83fa9be1-2598-46f8-acb5-673b170fa981%7D_1920_x_1080_Violet.png');">
+    <div class="slide-content-wrapper" style="padding: 20px 5%; justify-content: center;">
+      <div class="flipbook-container" style="height: 100%;">
+        <!-- Flipbook Page 1: Automated Virtual Card Generation -->
+        <div id="flipbook-page-1" class="flipbook-page">
+          <div class="left-content">
+            <h1>Automated Virtual Card Generation</h1>
+            <p>Generate virtual cards instantly for secure and controlled payments, enhancing security and streamlining your financial operations.</p>
+            <ul>
+              <li>On-demand card creation</li>
+              <li>Configurable spending limits</li>
+              <li>Enhanced security features</li>
+            </ul>
+          </div>
+          <div class="right-image">
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bb11f1867-8bdd-4d76-8bd1-59f6bebd4329%7D_luca-nicoletti-dzbSQkqZzUw-unsplash.jpg" alt="Automated Virtual Card Generation">
+          </div>
+        </div>
+
+        <!-- Flipbook Page 2: Real-time Payment Tracking -->
+        <div id="flipbook-page-2" class="flipbook-page">
+          <div class="left-content">
+            <h1>Real-time Payment Tracking</h1>
+            <p>Monitor the status of all your payments in real-time, providing instant updates and comprehensive transaction history for improved visibility.</p>
+            <ul>
+              <li>Instant payment updates</li>
+              <li>Comprehensive transaction history</li>
+              <li>Improved financial visibility</li>
+            </ul>
+          </div>
+          <div class="right-image">
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bb11f1867-8bdd-4d76-8bd1-59f6bebd4329%7D_luca-nicoletti-dzbSQkqZzUw-unsplash.jpg" alt="Real-time Payment Tracking">
+          </div>
+        </div>
+
+        <!-- Flipbook Page 3: Automated Invoice Matching -->
+        <div id="flipbook-page-3" class="flipbook-page">
+          <div class="left-content">
+            <h1>Automated Invoice Matching</h1>
+            <p>Streamline your reconciliation process with automated invoice matching, reducing manual data entry and accelerating your financial closing.</p>
+            <ul>
+              <li>Automatic matching of invoices to payments</li>
+              <li>Reduced manual data entry</li>
+              <li>Faster closing of books</li>
+            </ul>
+          </div>
+          <div class="right-image">
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bb11f1867-8bdd-4d76-8bd1-59f6bebd4329%7D_luca-nicoletti-dzbSQkqZzUw-unsplash.jpg" alt="Automated Invoice Matching">
+          </div>
+        </div>
+
+        <!-- Flipbook Page 4 -->
+        <div id="flipbook-page-4" class="flipbook-page">
+          <div class="left-content">
+            <h1>Enhanced Security Measures</h1>
+            <p>Our platform incorporates advanced security protocols to protect your transactions and data.</p>
+            <ul>
+              <li>Fraud detection and prevention</li>
+              <li>Data encryption</li>
+              <li>Compliance with industry standards</li>
+            </ul>
+          </div>
+          <div class="right-image">
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bb11f1867-8bdd-4d76-8bd1-59f6bebd4329%7D_luca-nicoletti-dzbSQkqZzUw-unsplash.jpg" alt="Enhanced Security Measures">
+          </div>
+        </div>
+
+        <!-- Flipbook Page 5 -->
+        <div id="flipbook-page-5" class="flipbook-page">
+          <div class="left-content">
+            <h1>Global Payment Network</h1>
+            <p>Access a vast network of payment providers and currencies for seamless international transactions.</p>
+            <ul>
+              <li>Multi-currency support</li>
+              <li>Global reach</li>
+              <li>Reduced foreign exchange fees</li>
+            </ul>
+          </div>
+          <div class="right-image">
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bb11f1867-8bdd-4d76-8bd1-59f6bebd4329%7D_luca-nicoletti-dzbSQkqZzUw-unsplash.jpg" alt="Global Payment Network">
+          </div>
+        </div>
+
+        <!-- Flipbook Page 6 -->
+        <div id="flipbook-page-6" class="flipbook-page">
+          <div class="left-content">
+            <h1>Customizable Workflows</h1>
+            <p>Tailor payment workflows to fit your specific business needs and operational processes.</p>
+            <ul>
+              <li>Flexible approval hierarchies</li>
+              <li>Automated routing</li>
+              <li>Integration with existing systems</li>
+            </ul>
+          </div>
+          <div class="right-image">
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bb11f1867-8bdd-4d76-8bd1-59f6bebd4329%7D_luca-nicoletti-dzbSQkqZzUw-unsplash.jpg" alt="Customizable Workflows">
+          </div>
+        </div>
+
+        <!-- Flipbook Page 7 -->
+        <div id="flipbook-page-7" class="flipbook-page">
+          <div class="left-content">
+            <h1>Comprehensive Reporting</h1>
+            <p>Generate detailed reports and analytics to gain insights into your payment activities and trends.</p>
+            <ul>
+              <li>Customizable reports</li>
+              <li>Real-time data access</li>
+              <li>Performance metrics</li>
+            </ul>
+          </div>
+          <div class="right-image">
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bb11f1867-8bdd-4d76-8bd1-59f6bebd4329%7D_luca-nicoletti-dzbSQkqZzUw-unsplash.jpg" alt="Comprehensive Reporting">
+          </div>
+        </div>
+
+        <!-- Flipbook Page 8 -->
+        <div id="flipbook-page-8" class="flipbook-page">
+          <div class="left-content">
+            <h1>Seamless Integration</h1>
+            <p>Easily integrate One Click Stay with your existing accounting and travel management systems.</p>
+            <ul>
+              <li>API-driven integration</li>
+              <li>Reduced implementation time</li>
+              <li>Compatibility with major platforms</li>
+            </ul>
+          </div>
+          <div class="right-image">
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bb11f1867-8bdd-4d76-8bd1-59f6bebd4329%7D_luca-nicoletti-dzbSQkqZzUw-unsplash.jpg" alt="Seamless Integration">
+          </div>
+        </div>
+
+        <!-- Flipbook Page 9 -->
+        <div id="flipbook-page-9" class="flipbook-page">
+          <div class="left-content">
+            <h1>Cost Optimization</h1>
+            <p>Reduce operational costs and improve profitability through automated processes and optimized payment flows.</p>
+            <ul>
+              <li>Lower transaction fees</li>
+              <li>Reduced manual labor</li>
+              <li>Improved cash flow</li>
+            </ul>
+          </div>
+          <div class="right-image">
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bb11f1867-8bdd-4d76-8bd1-59f6bebd4329%7D_luca-nicoletti-dzbSQkqZzUw-unsplash.jpg" alt="Cost Optimization">
+          </div>
+        </div>
+
+        <!-- Flipbook Page 10 -->
+        <div id="flipbook-page-10" class="flipbook-page">
+          <div class="left-content">
+            <h1>Enhanced Compliance</h1>
+            <p>Ensure adherence to global financial regulations and compliance standards with built-in features.</p>
+            <ul>
+              <li>Automated compliance checks</li>
+              <li>Audit trails</li>
+              <li>Regulatory updates</li>
+            </ul>
+          </div>
+          <div class="right-image">
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bb11f1867-8bdd-4d76-8bd1-59f6bebd4329%7D_luca-nicoletti-dzbSQkqZzUw-unsplash.jpg" alt="Enhanced Compliance">
+          </div>
+        </div>
+
+        <!-- Flipbook Page 11 -->
+        <div id="flipbook-page-11" class="flipbook-page">
+          <div class="left-content">
+            <h1>Scalable Solution</h1>
+            <p>One Click Stay is designed to scale with your business growth, accommodating increasing transaction volumes and evolving needs.</p>
+            <ul>
+              <li>Flexible infrastructure</li>
+              <li>High transaction capacity</li>
+              <li>Future-proof technology</li>
+            </ul>
+          </div>
+          <div class="right-image">
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bb11f1867-8bdd-4d76-8bd1-59f6bebd4329%7D_luca-nicoletti-dzbSQkqZzUw-unsplash.jpg" alt="Scalable Solution">
+          </div>
+        </div>
+      </div>
+
+      <div class="flipbook-nav">
+        <span class="page-dot active-dot" onclick="showFlipbookPage(1)">1</span>
+        <span class="page-dot" onclick="showFlipbookPage(2)">2</span>
+        <span class="page-dot" onclick="showFlipbookPage(3)">3</span>
+        <span class="page-dot" onclick="showFlipbookPage(4)">4</span>
+        <span class="page-dot" onclick="showFlipbookPage(5)">5</span>
+        <span class="page-dot" onclick="showFlipbookPage(6)">6</span>
+        <span class="page-dot" onclick="showFlipbookPage(7)">7</span>
+        <span class="page-dot" onclick="showFlipbookPage(8)">8</span>
+        <span class="page-dot" onclick="showFlipbookPage(9)">9</span>
+        <span class="page-dot" onclick="showFlipbookPage(10)">10</span>
+        <span class="page-dot" onclick="showFlipbookPage(11)">11</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Slide 12: NEW - Customer Testimonials Section Title Page (formerly Slide 13) -->
+  <div class="pt-page section-intro-page">
+    <div class="section-intro-box" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B83fa9be1-2598-46f8-acb5-673b170fa981%7D_1920_x_1080_Violet.png'); background-size: cover; background-position: center;">
+      <h1>Customer Testimonials</h1>
+    </div>
+  </div>
+
+  <!-- Slide 13: NEW - Video Testimonials -->
+  <div class="pt-page dark-text-slide" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B573208f0-8249-43c4-bdc5-fc4ba62840cd%7D_simon-zhu-4hluhoRJokI-unsplash.jpg');">
+    <div class="slide-content-wrapper" style="padding: 5% 5%; justify-content: center;">
+      <h1 style="text-align: center; margin-bottom: 40px;">Hear From Our Clients</h1>
+      <div class="testimonial-grid">
+        <div class="testimonial-video-item">
+          <img src="https://placehold.co/600x338/000000/FFFFFF?text=Video+Testimonial+1" alt="Video Testimonial 1">
+        </div>
+        <div class="testimonial-video-item">
+          <img src="https://placehold.co/600x338/000000/FFFFFF?text=Video+Testimonial+2" alt="Video Testimonial 2">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 14: NEW - Quote Testimonials -->
+  <div class="pt-page dark-text-slide" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B573208f0-8249-43c4-bdc5-fc4ba62840cd%7D_simon-zhu-4hluhoRJokI-unsplash.jpg');">
+    <div class="slide-content-wrapper" style="padding: 5% 5%; justify-content: center;">
+      <h1 style="text-align: center; margin-bottom: 40px;">What Our Clients Say</h1>
+      <div class="testimonial-grid">
+        <div class="testimonial-quote-item">
+          <p>"One Click Stay has revolutionized our payment process. It's incredibly efficient and has significantly reduced our operational costs."</p>
+          <span class="author">— Jane Doe, Travel Agency CEO</span>
+        </div>
+        <div class="testimonial-quote-item">
+          <p>"The security features are top-notch. We feel much safer handling transactions with One Click Stay."</p>
+          <span class="author">— John Smith, Finance Director</span>
+        </div>
+        <div class="testimonial-quote-item">
+          <p>"The global acceptance has opened up so many new opportunities for our business. Highly recommended!"</p>
+          <span class="author">— Emily White, International Sales Manager</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- START MOVED SECTION: How We Achieve Success -->
+  <!-- Slide 15: NEW - Section: How We Achieve Success - Section Title Page (formerly Slide 14) -->
+  <div class="pt-page section-intro-page">
+    <div class="section-intro-box" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B8a9ed5c6-4baa-44be-bf54-53bc5949e87f%7D_1920_x_1080_Crimson.png');">
+      <h1 class="allow-wrap">How We Achieve Success</h1>
+    </div>
+  </div>
+
+  <!-- Slide 16: NEW - How We Achieve Success: Through our Trusted Partner (formerly Slide 15) -->
+  <div class="pt-page dark-text-slide" style="background-color: #560900;">
+    <div class="slide-content-wrapper trusted-partner-layout" style="position: relative; padding: 100px 5% 5% 120px;">
+      <div class="left-gradient-overlay crimson-effect"></div>
+      <h1>Through our Trusted Partner</h1>
+      <p class="subtitle">We achieve success through our Trusted Partner:</p>
+      <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bfdb26f48-a602-4444-a7f0-be5efec77ab7%7D_Outpayce_secondary_logo_white_solid.png" alt="Amadeus Logo" style="filter: brightness(0) invert(1);"> <!-- Invert for white logo -->
+      <div class="trusted-partner-stats">
+        <div class="trusted-partner-stat-item">
+          <div class="stat-value">36+</div>
+          <div class="stat-label">years in travel</div>
+        </div>
+        <div class="trusted-partner-stat-item">
+          <div class="stat-value">$160B+</div>
+          <div class="stat-label">processed yearly</div>
+        </div>
+        <div class="trusted-partner-stat-item">
+          <div class="stat-value">400+</div>
+          <div class="stat-label">global travel customers</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Slide 17: NEW - How We Achieve Success: Through delivering Smooth Payments (formerly Slide 16) -->
+  <div class="pt-page dark-text-slide" style="background-color: #560900;">
+    <div class="slide-content-wrapper how-we-achieve-success-layout" style="position: relative; padding: 100px 5% 5% 120px;">
+      <div class="left-gradient-overlay crimson-effect"></div>
+      <h1>Through delivering Smooth Payments</h1>
+      <p class="subtitle">Our platform is built to help our customers excel in all markets with connections to 400+ acquiring banks, 6 card issuers, and all major card schemes.</p>
+      <div class="how-we-achieve-success-content">
+        <div class="how-we-achieve-success-item">
+          <span class="item-number number-1">1</span>
+          <h2>End-to-End Travel Payment Solutions</h2>
+          <p>We enable travel sellers, airlines, and hospitality providers to manage payments across the entire customer journey—booking, fulfillment, and reconciliation—while optimizing revenue and reducing friction.</p>
+        </div>
+        <div class="how-we-achieve-success-item">
+          <span class="item-number number-2">2</span>
+          <h2>Driving travel forward with next-gen payment technology</h2>
+          <p>At the core of our travel payment offering is a platform built to help our customers excel in all markets with connections to 400+ acquiring banks, 6 card issuers, and all major card schemes.</p>
+        </div>
+        <div class="how-we-achieve-success-item">
+          <span class="item-number number-3">3</span>
+          <h2>Customer-Centric Product Design</h2>
+          <p>All our products are designed to increase your revenues and reduce any frictions along the payment process.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- END MOVED SECTION: How We Achieve Success -->
+
+  <!-- Slide 18: Talk to Us: Form (Direct Contact Page) (formerly Slide 18) -->
+  <div class="pt-page dark-text-slide" style="background-color: #560900;">
+    <div class="slide-content-wrapper" style="position: relative; padding: 150px 0 5% 120px;">
+      <div class="left-gradient-overlay crimson-effect"></div>
+      <h1>Contact Form</h1>
+      <p style="color: white; font-weight: bold;">Discover how we can make a difference - contact us for more info</p>
+      <form style="background: transparent; padding: 20px; border-radius: 8px; width: 80%; max-width: 700px; color: white; margin: 0 auto;">
+        <div class="contact-form-grid">
+          <div class="form-field">
+            <label for="firstName" style="display: block; margin-bottom: 5px; color: #FF514D;">First Name:</label>
+            <input type="text" id="firstName" name="firstName" style="width: 100%; padding: 8px; border: 1px solid #FF514D; border-radius: 4px; background-color: transparent; color: white;" required>
+          </div>
+          <div class="form-field">
+            <label for="lastName" style="display: block; margin-bottom: 5px; color: #FF514D;">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" style="width: 100%; padding: 8px; border: 1px solid #FF514D; border-radius: 4px; background-color: transparent; color: white;" required>
+          </div>
+          <div class="form-field">
+            <label for="email" style="display: block; margin-bottom: 5px; color: #FF514D;">Email Address:</label>
+            <input type="email" id="email" name="email" style="width: 100%; padding: 8px; border: 1px solid #FF514D; border-radius: 4px; background-color: transparent; color: white;" required>
+          </div>
+          <div class="form-field">
+            <label for="company" style="display: block; margin-bottom: 5px; color: #FF514D;">Company:</label>
+            <input type="text" id="company" name="company" style="width: 100%; padding: 8px; border: 1px solid #FF514D; border-radius: 4px; background-color: transparent; color: white;" required>
+          </div>
+          <div class="form-field">
+            <label for="phone" style="display: block; margin-bottom: 5px; color: #FF514D;">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" style="width: 100%; padding: 8px; border: 1px solid #FF514D; border-radius: 4px; background-color: transparent; color: white;" required>
+          </div>
+          <div class="form-field">
+            <label for="country" style="display: block; margin-bottom: 5px; color: #FF514D;">Country:</label>
+            <input type="text" id="country" name="country" style="width: 100%; padding: 8px; border: 1px solid #FF514D; border-radius: 4px; background-color: transparent; color: white;" required>
+          </div>
+          <div class="form-field full-width">
+            <label for="message" style="display: block; margin-bottom: 5px; color: #FF514D;">How can we help?</label>
+            <textarea id="message" name="message" rows="4" style="width: 100%; padding: 8px; border: 1px solid #FF514D; border-radius: 4px; background-color: transparent; color: white;" required></textarea>
+          </div>
+          <button type="submit" class="cta-button full-width" style="width: 100%; border: none; cursor: pointer; background: #FF514D;">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Slide 19: Talk to Us: Ending Page (formerly Slide 19) -->
+  <div class="pt-page dark-text-slide" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B573208f0-8249-43c4-bdc5-fc4ba62840cd%7D_simon-zhu-4hluhoRJokI-unsplash.jpg');">
+    <div class="slide-content-wrapper">
+      <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bfdb26f48-a602-4444-a7f0-be5efec77ab7%7D_Outpayce_secondary_logo_white_solid.png" alt="Outpayce Logo" style="height: 100px; margin-bottom: 20px; object-fit: contain;">
+      <h1>Thank You for Reading!</h1>
+      <p>For more information about One Click Stay, please visit our website or contact us directly.</p>
+      <p style="font-size: 0.8em; margin-top: 30px;">One Click Stay is an Outpayce from Amadeus solution that leverages technology from Outpayce, S.A.U., entidad de dinero electrónico and its affiliates, which may include Voxel Media, S.L.U and its affiliates.</p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let slides; // Declare slides globally but initialize inside DOMContentLoaded
+  let current = 0;
+  let isAnimating = false;
+  let isFlipbookAnimating = false; // New flag for flipbook animation
+
+  // Detect which animation end event to use for cross-browser compatibility
+  const animEndEventNames = {
+    'WebkitAnimation' : 'webkitAnimationEnd',
+    'OAnimation' : 'oAnimationEnd',
+    'msAnimation' : 'MSAnimationEnd',
+    'animation' : 'animationend'
+  };
+  const animEndEventName = animEndEventNames[ (function() {
+    for (const name in animEndEventNames) {
+      if (typeof document.documentElement.style[name] !== 'undefined') {
+        return name;
+      }
+    }
+    return ''; // Fallback if no animation support
+  })() ];
+
+  function updatePageCounter() {
+    const counter = document.getElementById('page-counter');
+    if (counter && slides && slides.length > 0) { // Add checks for slides existence
+      counter.textContent = `${current + 1} / ${slides.length}`;
+    } else if (counter) {
+      counter.textContent = "0 / 0"; // Or some other default if slides are not loaded
+    }
+  }
+
+  function updateNavLinkHighlight() {
+    const navLinks = document.querySelectorAll('.top-nav a[data-nav-section]');
+    navLinks.forEach(link => link.classList.remove('nav-link-active'));
+
+    let activeSection = '';
+
+    // Define slide ranges for each navigation section (adjusted for removed slide)
+    if (current >= 2 && current <= 5) { // Slides 2-5 for "The Payments Industry"
+      activeSection = 'payments-industry';
+    } else if (current >= 6 && current <= 14) { // Slides 6-14 for "One Click Stay" (including testimonials)
+      activeSection = 'one-click-stay';
+    } else if (current >= 15 && current <= 17) { // Slides 15-17 for "How We Achieve Success"
+      activeSection = 'how-we-achieve-success';
+    } else if (current >= 18 && current <= 19) { // Slides 18-19 for "Talk to Us"
+      activeSection = 'talk-to-us';
+    }
+
+    if (activeSection) {
+      const activeLink = document.querySelector(`.top-nav a[data-nav-section="${activeSection}"]`);
+      if (activeLink) {
+        activeLink.classList.add('nav-link-active');
+      }
+    }
+  }
+
+  function showSlide(index, direction = 'next') {
+    if (isAnimating || index === current || !slides || slides.length === 0) {
+      return;
+    }
+
+    isAnimating = true;
+
+    const oldSlide = slides[current];
+    const newSlide = slides[index];
+
+    if (!oldSlide || !newSlide) {
+      console.error("Slide element not found during transition. Old Slide:", oldSlide, "New Slide:", newSlide);
+      isAnimating = false;
+      return;
+    }
+
+    // Prepare new slide: make it visible and set initial transform for entry animation
+    newSlide.style.visibility = 'visible';
+    newSlide.classList.add('pt-page-ontop'); // Ensure new slide is on top during transition
+    newSlide.classList.add('pt-page-current'); // Add current class to new slide immediately
+
+    if (direction === 'next') {
+      newSlide.classList.add('pt-page-moveFromRight');
+      oldSlide.classList.add('pt-page-exit-left');
+    } else {
+      newSlide.classList.add('pt-page-moveFromLeft');
+      oldSlide.classList.add('pt-page-exit-right');
+    }
+
+    // Remove current class from old slide immediately
+    oldSlide.classList.remove('pt-page-current');
+
+    // Listen for animation end on the NEW slide to clean up classes from BOTH slides
+    // This ensures the new slide is fully in place before the old one is hidden.
+    newSlide.addEventListener(animEndEventName, function handleNewSlideAnimationEnd() {
+      newSlide.removeEventListener(animEndEventName, handleNewSlideAnimationEnd);
+
+      // Clean up old slide
+      oldSlide.classList.remove('pt-page-exit-left', 'pt-page-exit-right');
+      oldSlide.style.visibility = 'hidden'; // Hide it completely
+
+      // Clean up new slide's temporary animation classes
+      newSlide.classList.remove('pt-page-moveFromRight', 'pt-page-moveFromLeft', 'pt-page-ontop');
+
+      isAnimating = false; // Animation finished
+    });
+
+    current = index;
+    updatePageCounter();
+    updateNavLinkHighlight(); // Call to update nav link highlight
+  }
+
+  function nextArrow() {
+    let nextIndex = current + 1;
+    if (nextIndex >= slides.length) {
+      nextIndex = 0; // Loop back to the first slide
+    }
+    showSlide(nextIndex, 'next');
+  }
+
+  function prevArrow() {
+    let prevIndex = current - 1;
+    if (prevIndex < 0) {
+      prevIndex = slides.length - 1; // Loop to the last slide
+    }
+    showSlide(prevIndex, 'prev');
+  }
+
+  function goToSlide(index) {
+    const direction = index > current ? 'next' : 'prev';
+    showSlide(index, direction);
+  }
+
+  function unlockContent() {
+    console.log("unlockContent called");
+    document.getElementById('unlock').style.display = 'none'; // Hide unlock screen
+
+    const ptPages = document.querySelector('.pt-pages');
+    const topNav = document.querySelector('.top-nav');
+    const navButtons = document.querySelectorAll('.nav-button');
+    const pageCounter = document.getElementById('page-counter');
+
+    console.log("Elements selected:", { ptPages, topNav, navButtons, pageCounter });
+
+    if (ptPages) ptPages.classList.add('active');
+    if (topNav) {
+      topNav.classList.add('visible');
+      console.log("topNav classList after adding visible:", topNav.classList);
+    }
+    navButtons.forEach(btn => {
+      if (btn) btn.classList.add('visible');
+    });
+    if (pageCounter) pageCounter.classList.add('visible');
+
+    // Set a flag in localStorage to remember that the content has been unlocked
+    localStorage.setItem('ebookUnlocked', 'true');
+
+    // Ensure the first slide is correctly visible and active after unlock
+    if (slides.length > 0) {
+      slides[0].classList.add('pt-page-current');
+      slides[0].style.visibility = 'visible';
+    } else {
+      console.error("No slides found to display after unlock.");
+    }
+    current = 0; // Reset current to 0 after unlock
+    updatePageCounter();
+    updateNavLinkHighlight(); // Call to update nav link highlight
+  }
+
+  // Variables for internal flipbook
+  let currentFlipbookPage = 1;
+  const totalFlipbookPages = 11; // Updated to 11 pages
+
+  // Function to handle internal flipbook navigation
+  function showFlipbookPage(pageNumber) {
+    const flipbookPages = document.querySelectorAll('.flipbook-page');
+    const pageDots = document.querySelectorAll('.flipbook-nav .page-dot');
+
+    if (pageNumber === currentFlipbookPage || isFlipbookAnimating) {
+        return;
+    }
+
+    isFlipbookAnimating = true;
+
+    const oldFlipbookPage = document.getElementById(`flipbook-page-${currentFlipbookPage}`);
+    const newFlipbookPage = document.getElementById(`flipbook-page-${pageNumber}`);
+
+    if (!oldFlipbookPage || !newFlipbookPage) {
+        console.error("Flipbook page element not found during transition.");
+        isFlipbookAnimating = false;
+        return;
+    }
+
+    // Update dot styling
+    pageDots.forEach(dot => dot.classList.remove('active-dot'));
+    if (pageNumber - 1 < pageDots.length) { // Check if dot exists
+        pageDots[pageNumber - 1].classList.add('active-dot');
+    }
+
+
+    const animationDuration = 700; // 0.7 seconds, matches CSS transition
+
+    // Set transitions for both pages (if not already set)
+    flipbookPages.forEach(page => {
+        page.style.transition = `transform ${animationDuration / 1000}s ease-in-out`;
+    });
+
+    // Immediately set new page to visible and position it for entry
+    newFlipbookPage.style.visibility = 'visible';
+    newFlipbookPage.style.zIndex = '1'; // Bring new page to front
+
+    if (pageNumber > currentFlipbookPage) { // Moving next (right to left)
+        newFlipbookPage.style.transform = 'translateX(100%)'; // Start off-screen right
+        // Force reflow before animating
+        void newFlipbookPage.offsetWidth;
+        newFlipbookPage.style.transform = 'translateX(0%)'; // Animate to on-screen
+        oldFlipbookPage.style.transform = 'translateX(-100%)'; // Animate old page off-screen left
+    } else { // Moving previous (left to right)
+        newFlipbookPage.style.transform = 'translateX(-100%)'; // Start off-screen left
+        // Force reflow before animating
+        void oldFlipbookPage.offsetWidth; // Use oldFlipbookPage for reflow if it's the one moving
+        oldFlipbookPage.style.transform = 'translateX(100%)'; // Animate old page off-screen right
+        newFlipbookPage.style.transform = 'translateX(0%)'; // Animate to on-screen
+    }
+
+    // After animation completes, clean up
+    setTimeout(() => {
+        oldFlipbookPage.style.visibility = 'hidden';
+        oldFlipbookPage.style.zIndex = '0';
+        oldFlipbookPage.style.transform = 'translateX(0%)'; // Reset old page position for next use
+        oldFlipbookPage.style.transition = 'none'; // Remove transition for reset
+
+        newFlipbookPage.style.transition = 'none'; // Remove transition for new page resting state
+
+        isFlipbookAnimating = false;
+    }, animationDuration);
+
+    currentFlipbookPage = pageNumber;
+  }
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Initialize slides here to ensure DOM is loaded
+    slides = document.querySelectorAll('.pt-page');
+
+    // Check if the ebook was already unlocked in a previous session
+    if (localStorage.getItem('ebookUnlocked') === 'true') {
+        unlockContent(); // Automatically unlock if the flag is set
+    }
+
+    // Make these functions globally accessible as they are called from inline HTML attributes
+    window.unlockContent = unlockContent;
+    window.nextArrow = nextArrow;
+    window.prevArrow = prevArrow;
+    window.goToSlide = goToSlide;
+    window.showFlipbookPage = showFlipbookPage; // Make flipbook function global too
+    window.closeBenefitOverlay = closeBenefitOverlay; // Make close overlay function global
+
+    // Add keyboard navigation
+    document.addEventListener('keydown', (event) => {
+      // Only allow keyboard navigation if the unlock screen is hidden
+      if (document.getElementById('unlock').style.display === 'none') {
+        if (event.key === 'ArrowRight') {
+          // Check if the current slide is the one with the flipbook (Slide 11, index 10)
+          if (current === 10) {
+            let nextFlipbookPage = currentFlipbookPage + 1;
+            if (nextFlipbookPage > totalFlipbookPages) {
+              nextFlipbookPage = 1; // Loop back to the first flipbook page
+            }
+            showFlipbookPage(nextFlipbookPage);
+          } else {
+            nextArrow();
+          }
+        } else if (event.key === 'ArrowLeft') {
+          // Check if the current slide is the one with the flipbook (Slide 11, index 10)
+          if (current === 10) {
+            let prevFlipbookPage = currentFlipbookPage - 1;
+            if (prevFlipbookPage < 1) {
+              prevFlipbookPage = totalFlipbookPages; // Loop to the last flipbook page
+            }
+            showFlipbookPage(prevFlipbookPage);
+          } else {
+            prevArrow();
+          }
+        }
+      }
+    });
+
+    // Event listener for the new Key Benefits dropdowns (now using an overlay)
+    const benefitHeaders = document.querySelectorAll('.benefit-header');
+    const overlayContent = document.querySelector('.benefit-overlay-content');
+    const overlayTitle = document.getElementById('overlay-title');
+    const overlayText = document.getElementById('overlay-text');
+    const closeButton = document.querySelector('.benefit-overlay-content .close-button');
+
+    benefitHeaders.forEach(header => {
+      header.addEventListener('click', () => {
+        const benefitItem = header.closest('.benefit-item');
+        const title = header.querySelector('.benefit-title').textContent;
+        const content = benefitItem.querySelector('.benefit-content-hidden').innerHTML;
+        const headerBgColor = window.getComputedStyle(header).backgroundColor;
+
+        // Set overlay content and style
+        overlayTitle.textContent = title;
+        overlayText.innerHTML = content;
+        overlayContent.style.backgroundColor = headerBgColor; // Match header color
+
+        // Activate overlay
+        overlayContent.classList.add('active');
+      });
+    });
+
+    function closeBenefitOverlay() {
+      overlayContent.classList.remove('active');
+    }
+
+    closeButton.addEventListener('click', closeBenefitOverlay);
+
+    // Initial update of the page counter when the script loads
+    updatePageCounter();
+    updateNavLinkHighlight(); // Call to update nav link highlight on initial load
+    // Ensure initial flipbook page is shown if applicable
+    showFlipbookPage(1);
+  });
+</script>
+</body>
+</html>
