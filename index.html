@@ -1,0 +1,3116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One Click Stay</title>
+  <script src="https://amadeus.com/etc.clientlibs/clientlibs/granite/jquery.min.js"></script>
+  <script async="async" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Ba919acbd-615c-4739-b30e-566da33d44e8%7D_apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bfd9ef690-7ff1-4af3-94b4-50e86a7167a3%7D_favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B21c39094-b11e-42ed-bfd6-f6dfc8876972%7D_favicon-16x16.png">
+  <link rel="stylesheet" type="text/css" href="https://img06.en25.com/Web/Amadeus/%7B23e3736e-5d4c-4798-a5e3-2f8c4a1047d9%7D_lp_template_form_css.css">
+  <style>
+    /* Amadeus Neue font */
+    @font-face {
+      font-family: 'amadeus_neuebold';
+      src: url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-bold-webfont.eot');
+      src: url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-bold-webfont.eot?#iefix') format('embedded-opentype'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-bold-webfont.woff2') format('woff2'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-bold-webfont.woff') format('woff'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-bold-webfont.ttf') format('truetype'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-bold-webfont.svg#amadeus_neuebold') format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'amadeus_neuelight';
+      src: url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-light-webfont.eot');
+      src: url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-light-webfont.eot?#iefix') format('embedded-opentype'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-light-webfont.woff2') format('woff2'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-light-webfont.woff') format('woff'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-light-webfont.ttf') format('truetype'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-light-webfont.svg#amadeus_neuelight') format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'amadeus_neuemedium';
+      src: url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-medium-webfont.eot');
+      src: url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-medium-webfont.eot?#iefix') format('embedded-opentype'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-medium-webfont.woff2') format('woff2'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-medium-webfont.woff') format('woff'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-medium-webfont.ttf') format('truetype'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-medium-webfont.svg#amadeus_neuemedium') format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+    @font-face {
+      font-family: 'amadeus_neueregular';
+      src: url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-regular-webfont.eot');
+      src: url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-regular-webfont.eot?#iefix') format('embedded-opentype'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-regular-webfont.woff2') format('woff2'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-regular-webfont.woff') format('woff'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-regular-webfont.ttf') format('truetype'),
+           url('https://futureofpayments.com/web-fonts/amadeus-neue/amadeusneue-regular-webfont.svg#amadeus_neuelight') format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    :root {
+      --feature-gap: 30px;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'amadeus_neueregular', Arial, sans-serif;
+      overflow: hidden; /* Ensures no scrolling */
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #f8f8f8; /* Default body background */
+      color: #000835;
+    }
+
+    /* Core Bookblock-like styles for page transitions */
+    .pt-pages {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden; /* Ensure content doesn't spill during transitions */
+        background-color: #f8f8f8; /* Fallback background for the entire slide area */
+    }
+
+    .pt-page {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        visibility: hidden; /* Hidden by default */
+        overflow: hidden;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        z-index: 0; /* Default z-index for inactive pages */
+        background-color: #f8f8f8; /* Default light background for individual pages */
+        background-size: cover; /* Ensure background images cover the entire slide */
+        background-position: center; /* Center the background images */
+    }
+
+    .pt-page-current {
+        visibility: visible;
+        z-index: 1; /* Active page on top of inactive pages */
+    }
+
+    /* Animations for sliding effect (pure transform, no opacity in keyframes) */
+    /* Exiting to left */
+    .pt-page-exit-left { /* Renamed for clarity */
+        -webkit-animation: slideOutLeft 1s both ease-in-out;
+        animation: slideOutLeft 1s both ease-in-out;
+    }
+    @-webkit-keyframes slideOutLeft {
+        0% { -webkit-transform: translateX(0%); }
+        100% { -webkit-transform: translateX(-100%); }
+    }
+    @keyframes slideOutLeft {
+        0% { transform: translateX(0%); }
+        100% { transform: translateX(-100%); }
+    }
+
+    /* Exiting to right */
+    .pt-page-exit-right { /* Renamed for clarity */
+        -webkit-animation: slideOutRight 1s both ease-in-out;
+        animation: slideOutRight 1s both ease-in-out;
+    }
+    @-webkit-keyframes slideOutRight {
+        0% { -webkit-transform: translateX(0%); }
+        100% { -webkit-transform: translateX(100%); }
+    }
+    @keyframes slideOutRight {
+        0% { transform: translateX(0%); }
+        100% { transform: translateX(100%); }
+    }
+
+    /* Entering from left */
+    .pt-page-moveFromLeft {
+        -webkit-animation: slideInLeft 1s ease-in-out both;
+        animation: slideInLeft 1s ease-in-out both;
+    }
+    @-webkit-keyframes slideInLeft {
+        from { -webkit-transform: translateX(-100%); }
+        to { -webkit-transform: translateX(0%); }
+    }
+    @keyframes slideInLeft {
+        from { transform: translateX(-100%); }
+        to { transform: translateX(0%); }
+    }
+
+    /* Entering from right */
+    .pt-page-moveFromRight {
+        -webkit-animation: slideInRight 1s ease-in-out both;
+        animation: slideInRight 1s ease-in-out both;
+    }
+    @-webkit-keyframes slideInRight {
+        from { -webkit-transform: translateX(100%); }
+        to { -webkit-transform: translateX(0%); }
+    }
+    @keyframes slideInRight {
+        from { transform: translateX(100%); }
+        to { transform: translateX(0%); }
+    }
+
+    /* Ensure the entering page is on top during transition */
+    .pt-page-ontop {
+        z-index: 999;
+    }
+
+    .nav-button.left, .nav-button.right {
+      width: 60px;
+      height: 100px;
+      /* Slightly darker fallback to improve contrast when images fail to load */
+      background-color: rgba(233, 233, 233, 0.7);
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      z-index: 1000; /* Ensure buttons are always above all pages */
+      overflow: hidden;
+    }
+
+    .nav-button.left {
+      left: 0px;
+    }
+
+    .nav-button.right {
+      right: 0px;
+    }
+
+    .nav-button.left::before, .nav-button.right::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 20%;
+    }
+
+    .nav-button.left::before {
+      background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B51253dcc-d35b-43c4-8974-bdd135376598%7D_left_arrow.png');
+      animation: arrow-move-left 1.5s infinite ease;
+    }
+
+    .nav-button.right::before {
+      background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B4d5eec72-ad28-43b0-a7fa-b44d1ccb0152%7D_right_arrow.png');
+      animation: arrow-move-right 1.5s infinite ease;
+    }
+
+    @keyframes arrow-move-left {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(-6px); }
+      100% { transform: translateX(0); }
+    }
+
+    @keyframes arrow-move-right {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(6px); }
+      100% { transform: translateX(0); }
+    }
+
+    /* Initial state for elements that should be hidden until unlocked */
+    .pt-pages, .top-nav, .nav-button, #page-counter {
+      display: none;
+    }
+    /* Active state to display elements after unlock */
+    .pt-pages.active { /* Only pt-pages is toggled by 'active' class now */
+      display: block;
+    }
+    /* Top nav, nav buttons, and page counter are always visible after unlock */
+    .top-nav.visible {
+        display: flex; /* This is now correctly applied ONLY when 'visible' class is present */
+    }
+    .nav-button.visible, #page-counter.visible {
+        display: block;
+    }
+
+
+    .slide-content-wrapper {
+        max-width: 1400px;
+        margin: 0 auto;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 150px 0 5% 0;
+        box-sizing: border-box;
+    }
+
+    .slide h1 {
+      margin-top: 0;
+      color: #3A8BFF;
+      text-shadow: none !important;
+      opacity: 1 !important;
+      font-size: 2.5em;
+      -webkit-text-stroke: transparent !important;
+      text-stroke: transparent !important;
+      background-clip: border-box !important;
+      -webkit-background-clip: border-box !important;
+    }
+    .section-content-slide h1 {
+      color: white;
+      text-shadow: none !important;
+      opacity: 1 !important;
+      -webkit-text-stroke: transparent !important;
+      text-stroke: transparent !important;
+      background-clip: border-box !important;
+      -webkit-background-clip: border-box !important;
+    }
+    /* Specific background color for dark-themed slides */
+    .section-content-slide,
+    .pt-page[style*="Dark_Sky.png"] { /* For slide 1 and other dark-themed slides */
+        background-color: #000835; /* Dark fallback */
+    }
+    /* .title-slide {
+        background-color: #000835; /* Also dark fallback for title slide */
+    /* } */
+
+    /* New style for dark background slides to make text white */
+    .dark-text-slide h1,
+    .dark-text-slide p,
+    .dark-text-slide ul li,
+    .dark-text-slide strong { /* Added strong for highlight-stat */
+      color: white;
+    }
+
+
+    .slide p, .slide ul li {
+      color: #000835;
+    }
+    .cta-button {
+      display: inline-block;
+      background: #3A8BFF;
+      color: white;
+      padding: 1rem 2rem;
+      margin-top: 2rem;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease; /* Add transition for hover effect */
+    }
+    /* Hover effect for CTA button */
+    .cta-button:hover {
+      background-color: #2a72e0; /* Darker blue on hover */
+    }
+    #page-counter {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white; /* Changed to white */
+      font-size: 0.9rem;
+      z-index: 1000; /* Ensure page counter is always above all pages */
+      text-align: center;
+    }
+    .top-nav {
+      position: absolute;
+      top: 32px; /* Move down from the top */
+      width: 100%;
+      background: transparent;
+      padding: 0 0 0 48px; /* Move from left edge */
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      z-index: 1001;
+      box-sizing: border-box;
+    }
+    .top-nav .nav-left-links {
+        display: flex;
+        align-items: center;
+        margin-left: 0;
+    }
+    .top-nav .menu-icon {
+        /* Remove all custom height, width, and margin adjustments */
+        /* height: 32px !important; */
+        /* width: 40px !important; */
+        /* margin-right: 56px !important; */
+        /* margin-right: 96px !important; */
+        /* Remove vertical-align: middle; */
+    }
+    .outpayce-logo-small {
+        height: 64px !important;
+        width: auto !important;
+        margin-left: 32px !important;
+    }
+    .top-nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1rem; /* Slightly bigger */
+      margin: 0 12px; /* Increased margin */
+      cursor: pointer;
+    }
+    /* New style for active navigation link */
+    .top-nav a.nav-link-active {
+        text-decoration: underline;
+        text-underline-offset: 5px; /* Adjust as needed for desired spacing */
+        /* You can add more styles here for active state, e.g., font-weight, color */
+    }
+    .top-nav .home-icon { /* Specific style for home icon */
+        height: 28px; /* Bigger home icon */
+        vertical-align: middle;
+        margin-right: 0; /* No text next to it, so no right margin */
+    }
+    /* New style for the always-visible logo container (top right) */
+    .outpayce-logo-container-global {
+        position: absolute;
+        top: 10px;
+        right: 20px; /* Position to the far right */
+        z-index: 1002; /* Ensure it's above the nav bar */
+    }
+    .outpayce-logo-container-global .outpayce-logo-small {
+        height: 72px !important;
+        width: auto !important;
+        margin-left: 24px !important;
+    }
+    /* New styles for the text-based logo in top-nav */
+    .outpayce-text-logo-container {
+        margin-left: 20px; /* Space from menu icon */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        line-height: 1; /* Adjust line height for stacked text */
+    }
+    .outpayce-text-logo-container .logo-main {
+        font-family: 'amadeus_neuebold', Arial, sans-serif;
+        font-size: 1.5em; /* Larger font for 'outpayce' */
+        color: white;
+        text-transform: uppercase;
+    }
+    .outpayce-text-logo-container .logo-sub {
+        font-family: 'amadeus_neueregular', Arial, sans-serif;
+        font-size: 0.8em; /* Smaller font for 'from AMADEUS' */
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+    }
+
+    .stats-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .stat-card {
+      background: #C5D5F9;
+      border-left: 4px solid #3A8BFF;
+      padding: 1rem;
+      flex: 1 1 250px;
+      color: #000835;
+    }
+    .highlight-stat {
+      background: #3A8BFF;
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      font-weight: bold;
+      border-radius: 6px;
+      margin-top: 2rem;
+    }
+    .unlock-container {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B0f5e05de-80db-45cd-9e2f-61cb447e7136%7D_luigi-laezza-k3MkV99SXBg-unsplash.jpg');
+      background-color: #111;
+      background-size: cover;
+      background-position: center;
+      color: white;
+      padding: 2rem;
+      box-sizing: border-box;
+    }
+    .unlock-container h1 {
+      color: white;
+      font-size: 3em;
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+    .form-overlay-box {
+      width: 100%;
+      max-width: 1100px;
+      
+      padding: 4rem;
+      border-radius: 10px;
+      box-sizing: border-box;
+    }
+    .form-header {
+      margin-bottom: 2.5rem;
+    }
+    .unlock-logo {
+      height: 35px;
+      margin-bottom: 1rem;
+    }
+    #unlock-form {
+      width: 100%;
+    }
+    .form-content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+    .form-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    #unlock-form input[type="text"],
+    #unlock-form input[type="email"],
+    #unlock-form input[type="tel"] {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      color: white;
+      padding: 0.75rem 0;
+      font-size: 1rem;
+      font-family: 'amadeus_neueregular', Arial, sans-serif;
+    }
+    #unlock-form input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    .form-actions {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .checkbox-container {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 1.5rem;
+    }
+    #unlock-form input[type="checkbox"] {
+      -webkit-appearance: none;
+      appearance: none;
+      background-color: transparent;
+      margin: 0;
+      font: inherit;
+      color: white;
+      width: 1.15em;
+      height: 1.15em;
+      border: 0.15em solid white;
+      border-radius: 0.15em;
+      transform: translateY(0.075em);
+      margin-right: 0.75rem;
+      flex-shrink: 0;
+      display: grid;
+      place-content: center;
+      cursor: pointer;
+    }
+    #unlock-form input[type="checkbox"]::before {
+      content: "";
+      width: 0.65em;
+      height: 0.65em;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+      box-shadow: inset 1em 1em #3A8BFF;
+    }
+    #unlock-form input[type="checkbox"]:checked::before {
+      transform: scale(1);
+    }
+    #unlock-form label {
+      font-size: 0.8em;
+      color: #C5D5F9;
+      line-height: 1.4;
+    }
+    .unlock-submit {
+      background: transparent;
+      border: 2px solid white;
+    }
+    .unlock-submit:hover {
+      background: #3A8BFF;
+      border-color: #3A8BFF;
+    }
+
+    .title-slide {
+      /* Use a dark fallback colour so text remains readable if the remote
+         background image fails to load.  The remote image is still
+         referenced as a higher layer via background-image. */
+      background-color: #000835;
+      background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Be0e604f8-422f-40ab-a9d8-59e9ee9067a1%7D_a_person_looking_at_the_phone.jpg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 0 0 0 10%;
+    }
+
+    .title-slide .slide-content-wrapper {
+        padding: 0;
+        max-width: none;
+        margin: 0;
+        width: auto;
+        height: auto;
+        justify-content: flex-start;
+    }
+
+    .title-box {
+      background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Baf0c3c06-7eb8-4f7a-88d4-0cd833e8c982%7D_1920_x_1080_Dark_Sky.png');
+      background-size: cover;
+      background-position: center;
+      padding: 3rem 4rem;
+      color: white;
+      max-width: 700px;
+      border-radius: 0;
+      text-align: left;
+    }
+
+    .title-box h1 {
+      color: white;
+      font-size: 2.8em;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    
+    .title-box .subtitle {
+      font-family: 'amadeus_neuemedium', Arial, sans-serif;
+      font-size: 1.3em;
+      color: #3A8BFF;
+      margin-bottom: 1.5rem;
+    }
+
+    .title-box p {
+      color: white;
+      font-size: 1.1em;
+      line-height: 1.5;
+    }
+
+    .section-content-slide {
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: block;
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .section-layout-wrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 150px 5% 5% 5%;
+        box-sizing: border-box;
+        height: 100%;
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .section-title-area {
+        width: 35%;
+        padding-right: 30px;
+        box-sizing: border-box;
+        flex-shrink: 0;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+    }
+    .section-content-slide .section-title-area h1 {
+      color: white;
+      margin-bottom: 2rem;
+      font-size: 3.5em;
+      line-height: 1.1;
+    }
+    .section-content-slide .section-title-area p {
+        color: white;
+        font-size: 1.1em;
+        margin-top: 1rem;
+    }
+    .section-content-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.8rem;
+      width: 65%;
+      flex-grow: 1;
+      max-width: 100%;
+    }
+    .section-content-grid.three-column-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .section-content-box {
+      padding: 1rem;
+      border-radius: 0;
+      text-align: left;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100px;
+      color: #000835;
+      font-size: 1.6em;
+    }
+
+    .section-content-slide[style*="Dark_Sky.png"] .section-content-box {
+        background-color: #3A8BFF;
+    }
+    .section-content-slide[style*="Dark_Sky.png"] .section-content-box:hover {
+        background-color: #2a72e0;
+    }
+
+    .section-content-slide[style*="Forrest_Green.png"] .section-content-box {
+        background-color: #92FF73;
+    }
+    .section-content-slide[style*="Forrest_Green.png"] .section-content-box:hover {
+        background-color: #72D953;
+    }
+
+    .section-content-slide[style*="Violet.png"] .section-content-box {
+        background-color: #B650FF;
+    }
+    .section-content-slide[style*="Violet.png"] .section-content-box:hover {
+        background-color: #9A3EE0;
+    }
+
+    .section-content-slide[style*="Crimson.png"] .section-content-box {
+        background-color: #FF514D;
+    }
+    .section-content-slide[style*="Crimson.png"] .section-content-box:hover {
+        background-color: #E03E3B;
+    }
+
+    .section-intro-page {
+        background-size: cover;
+        background-position: center;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-left: 0;
+        box-sizing: border-box;
+    }
+    .section-intro-box {
+        padding: 2rem 4rem 2rem 12rem;
+        border-radius: 10px;
+        text-align: left;
+        width: 50%;
+        height: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        box-sizing: border-box;
+        background-size: cover;
+        background-position: center;
+    }
+    .section-intro-box h1 {
+        font-size: 3.5em;
+        margin-bottom: 0;
+        line-height: 1.1;
+        color: white;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: normal;
+    }
+    .section-intro-box h1.allow-wrap {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: initial;
+    }
+    .section-intro-box p {
+        font-size: 1.1em;
+        line-height: 1.5;
+        color: white;
+    }
+
+    .slide-content-two-column {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        height: 100%;
+        padding: 0 5%;
+        box-sizing: border-box;
+    }
+
+    .slide-content-two-column .left-column,
+    .slide-content-two-column .right-column {
+        flex: 1;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .slide-content-two-column .left-column {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+    }
+
+    .large-stat-container {
+        margin-bottom: 20px;
+    }
+
+    .stat-pre-text {
+        font-size: 1.2em;
+        color: white;
+        margin-bottom: 5px;
+    }
+
+    .large-stat {
+        font-family: 'amadeus_neueregular', Arial, sans-serif;
+        font-size: 4.5em;
+        color: white;
+        line-height: 1.1;
+        margin: 0;
+    }
+
+    .small-text-box {
+        background-color: #3A8BFF;
+        padding: 15px 20px;
+        border-radius: 8px;
+        color: #000835;
+        font-size: 1em;
+        line-height: 1.4;
+        max-width: 80%;
+    }
+    .small-text-box p {
+        color: #000835;
+    }
+
+    .slide-content-two-column .right-column h1 {
+        font-size: 3.5em;
+        color: white;
+        margin-bottom: 20px;
+        line-height: 1.2;
+    }
+
+    .slide-content-two-column .right-column p {
+        font-size: 1.2em;
+        color: white;
+        line-height: 1.6;
+    }
+
+    .flipbook-container {
+        position: relative;
+        width: 100%;
+        height: calc(100% - 150px);
+        overflow: hidden;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .pt-page-current .flipbook-container {
+        display: flex;
+    }
+
+    .flipbook-page {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        visibility: hidden;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        padding: 20px;
+        box-sizing: border-box;
+        z-index: 0;
+        opacity: 0;
+    }
+
+    .flipbook-page.flipbook-page-active {
+      visibility: visible;
+      opacity: 1;
+      z-index: 1;
+    }
+
+    .flipbook-page .left-content {
+        flex: 0 0 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .flipbook-page .right-image {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    }
+    
+    .image-nav-wrapper {
+        position: relative;
+        display: inline-block;
+        line-height: 0;
+    }
+
+    .flipbook-page .right-image img {
+        display: block;
+        max-width: 100%;
+        max-height: 78%;
+        height: auto;
+        border-radius: 8px;
+        object-fit: contain;
+    }
+
+    .flipbook-page-number {
+        font-family: 'amadeus_neueregular', Arial, sans-serif;
+        font-size: 10rem;
+        color: #3A8BFF;
+        line-height: 1;
+    }
+
+    .flipbook-tagline {
+        font-family: 'amadeus_neueregular', Arial, sans-serif;
+        font-size: 1.5rem;
+        color: white;
+        margin: 1rem 0;
+    }
+
+    .flipbook-icon {
+        height: 80px;
+        width: auto;
+        margin-top: 1.5rem;
+        object-fit: contain;
+    }
+
+    .flipbook-nav {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        display: flex;
+        justify-content: flex-end;
+        z-index: 10;
+        gap: 5px;
+    }
+
+    .flipbook-nav .page-dot {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 50%;
+        background-color: transparent;
+        color: #3A8BFF;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        font-weight: bold;
+        font-size: 1rem;
+    }
+
+    .flipbook-nav .page-dot.active-dot {
+        background-color: white;
+        color: #3A8BFF;
+    }
+    
+    .problem-solution-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 20px;
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .solution-card {
+      background-color: transparent;
+      padding: 0;
+      border-radius: 0;
+      border-left: none;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      color: white;
+      box-shadow: none;
+      text-align: left;
+    }
+
+    .solution-card .card-number {
+        font-family: 'amadeus_neuebold', Arial, sans-serif;
+        font-size: 4.5em;
+        color: #3A8BFF;
+        margin-bottom: 5px;
+        line-height: 1;
+    }
+
+    .solution-card .card-title {
+        font-family: 'amadeus_neuebold', Arial, sans-serif;
+        font-size: 1.5em;
+        margin-bottom: 10px;
+        color: white;
+    }
+
+    .solution-card .card-text {
+        font-size: 1em;
+        line-height: 1.5;
+        margin-bottom: 10px;
+        color: white;
+    }
+
+    .solution-card .card-source {
+        font-size: 0.85em;
+        color: #C5D5F9;
+        margin-top: auto;
+    }
+
+    /* REMOVED: .has-left-graphic system, as it's now part of the background images */
+
+    /* NEW: Class for left padding on slides with built-in gradient backgrounds */
+    .content-padded-left {
+        padding-left: calc(var(--content-alignment-padding) + 120px) !important;
+    }
+
+    /* Styles for the new Testimonial slide */
+    .testimonial-grid-v2 {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        width: 100%;
+    }
+    .testimonial-quote-v2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        font-family: 'amadeus_neueregular', Arial, sans-serif;
+        font-style: italic;
+        color: white;
+    }
+    .testimonial-quote-v2 p {
+        font-size: 1.1rem;
+        line-height: 1.5;
+        margin-top: 0;
+    }
+    .testimonial-quote-v2 .author-info {
+        margin-top: 1.5rem;
+    }
+    .testimonial-quote-v2 .author-info img {
+        height: 40px;
+        width: auto;
+        margin-top: 10px;
+    }
+    .testimonial-videos-v2 {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    .testimonial-videos-v2 .video-placeholder {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background-color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+     .testimonial-videos-v2 .video-placeholder img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+     }
+
+    /* Classes for the "Three Reasons" and "Getting Started" slides */
+    .reasons-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+        padding: 5% 5%;
+        box-sizing: border-box;
+    }
+    .reason-item {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 1.5rem;
+        color: #ffffff;
+        text-align: left;
+    }
+    .reason-item h2 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        color: #D1B7E6;
+    }
+    .reason-item p {
+        font-size: 1.1rem;
+        line-height: 1.4;
+    }
+    .getting-started-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        padding: 5% 5%;
+        box-sizing: border-box;
+    }
+    .step-item {
+        flex: 1 1 calc(33.333% - 1rem);
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 1.5rem;
+        color: #ffffff;
+        text-align: left;
+    }
+    .step-item h2 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        color: #D1B7E6;
+    }
+    .step-item p {
+        font-size: 1.1rem;
+        line-height: 1.4;
+    }
+    @media (max-width: 768px) {
+        .reasons-grid {
+            grid-template-columns: 1fr;
+        }
+        .getting-started-grid {
+            flex-direction: column;
+        }
+        .step-item {
+            flex: 1 1 100%;
+        }
+    }
+
+    /* Styles for the new Glossary slide */
+    .glossary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem 3rem;
+      color: #000835;
+    }
+    .glossary-item h3 {
+      font-family: 'amadeus_neuebold', Arial, sans-serif;
+      font-size: 1.3rem;
+      color: #3A8BFF;
+      margin: 0 0 0.5rem 0;
+    }
+    .glossary-item p {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    @media screen and (max-width: 900px) {
+      .testimonial-grid-v2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media screen and (max-width: 768px) {
+      .pt-pages { height: auto; }
+      .pt-page { position: static; display: block; height: auto; }
+      .nav-button, #page-counter { display: none !important; }
+      .top-nav { flex-direction: column; align-items: flex-start; }
+      .stats-grid, .testimonial-grid-v2 { flex-direction: column; grid-template-columns: 1fr; }
+      .title-slide { flex-direction: column; text-align: center; padding: 50px 5%; justify-content: center; }
+      .title-box { max-width: 100%; margin-top: 0; text-align: center; }
+      .section-content-slide { display: block; height: auto; }
+      .section-layout-wrapper { flex-direction: column; align-items: center; padding: 80px 5% 5% 5%; height: auto; max-width: 100%; }
+      .section-content-slide .section-title-area { width: 100%; padding-right: 0; text-align: center; margin-bottom: 2rem; }
+      .section-content-slide .section-title-area h1 { font-size: 2.5em; }
+      .section-content-slide .section-content-grid { grid-template-columns: 1fr; width: 100%; max-height: none; height: auto; }
+      .section-content-grid.three-column-grid { grid-template-columns: 1fr; }
+      .section-intro-page { padding-left: 0; justify-content: center; }
+      .section-intro-box { width: 90%; text-align: center; height: auto; padding: 1.5rem 2rem; }
+      .unlock-container h1 { font-size: 2em; }
+      .form-overlay-box { padding: 2rem; }
+      .form-content-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .slide-content-two-column { flex-direction: column; padding-top: 80px; justify-content: flex-start; text-align: center; }
+      .slide-content-two-column .left-column, .slide-content-two-column .right-column { width: 100%; padding: 10px; align-items: center; }
+      .large-stat { font-size: 3em; }
+      .small-text-box { max-width: 90%; margin: 0 auto; }
+      .slide-content-two-column .right-column h1 { font-size: 2.5em; }
+      .flipbook-page { flex-direction: column; }
+      .flipbook-page .left-content, .flipbook-page .right-image { width: 100%; padding: 10px 0; text-align: center; }
+      .flipbook-page .left-content ul { text-align: center; padding-left: 0; }
+      .flipbook-page .left-content ul li { padding-left: 0; text-align: center; }
+      .flipbook-page .left-content ul li::before { position: static; margin-right: 5px; }
+      .flipbook-page h1 { font-size: 2em; }
+      .flipbook-page p, .flipbook-page ul li { font-size: 0.9em; }
+      .flipbook-nav { position: static; margin-top: 20px; justify-content: center; }
+      .problem-solution-grid { grid-template-columns: 1fr; }
+      .new-slide-6-layout .top-section-6 { flex-direction: column; align-items: stretch; padding: 0 5%; gap: 30px; }
+      .new-slide-6-layout .left-problem-box { width: 100%; padding: 30px; font-size: 1.1em; }
+      .new-slide-6-layout .right-challenges-grid { grid-template-columns: 1fr; width: 100%; padding-left: 0; }
+      .new-slide-6-layout .bottom-call-to-action { font-size: 1.5em; padding: 20px; }
+      .key-benefits-layout, .key-features-layout-new { flex-direction: column; padding-top: 80px !important; align-items: center; text-align: center; }
+      .key-benefits-left, .key-features-left-new { width: 100%; margin-bottom: 30px; text-align: center; }
+      .key-benefits-left h1, .key-features-left-new h1 { font-size: 2.5em; }
+      .key-benefits-right, .key-features-right-new { width: 90%; padding-left: 0; }
+      .benefit-item, .feature-item-new { margin-bottom: 15px; }
+      .benefit-overlay-content { position: static !important; height: auto !important; transform: translateY(0) !important; opacity: 1 !important; visibility: visible !important; padding-top: 15px; padding-bottom: 15px; }
+      .benefit-item .benefit-content-hidden { display: none; }
+    }
+
+    .new-slide-6-layout {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 80px 0;
+      box-sizing: border-box;
+      width: 100%;
+      max-width: none;
+    }
+
+    .new-slide-6-layout .top-section-6 {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto 40px auto;
+      padding-right: 5%;
+      box-sizing: border-box;
+    }
+
+    .new-slide-6-layout .left-problem-box {
+      background-color: #3A8BFF;
+      color: #000835;
+      padding: 40px 40px 40px 5%;
+      border-radius: 0;
+      flex: 0 0 45%;
+      box-sizing: border-box;
+      font-size: 1.3em;
+      line-height: 1.6;
+      text-align: left;
+      display: flex;
+      align-items: center;
+    }
+    .new-slide-6-layout .left-problem-box p {
+        color: #000835;
+        margin: 0;
+        font-weight: bold;
+    }
+
+    .new-slide-6-layout .right-challenges-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+      flex: 1;
+      padding-left: 5%;
+      box-sizing: border-box;
+    }
+
+    .new-slide-6-layout .challenge-card {
+      background-color: transparent;
+      padding: 0;
+      color: white;
+      text-align: left;
+      box-shadow: none;
+    }
+
+    .new-slide-6-layout .challenge-card h2 {
+      font-family: 'amadeus_neuebold', Arial, sans-serif;
+      font-size: 1.5em;
+      color: white;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .new-slide-6-layout .challenge-card p {
+      font-size: 0.95em;
+      line-height: 1.5;
+      color: #C5D5F9;
+      margin-bottom: 15px;
+    }
+
+    .new-slide-6-layout .challenge-card .challenge-source {
+      font-size: 0.8em;
+      color: #C5D5F9;
+      margin-top: auto;
+      display: block;
+    }
+
+    .new-slide-6-layout .bottom-call-to-action {
+      font-family: 'amadeus_neueregular', Arial, sans-serif;
+      font-size: 2em;
+      color: #3A8BFF;
+      text-align: center;
+      width: 100%;
+      max-width: 1400px;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .new-slide-6-layout .bottom-call-to-action h1 {
+        color: #3A8BFF;
+        margin: 0;
+        line-height: 1.2;
+        font-family: 'amadeus_neueregular', Arial, sans-serif;
+        font-size: 1em;
+    }
+
+    .key-benefits-layout {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      padding: 100px 5% 5% 5%;
+      box-sizing: border-box;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .key-benefits-left {
+      width: 35%;
+      flex-shrink: 0;
+      text-align: left;
+      padding-right: 30px;
+      box-sizing: border-box;
+    }
+
+    .key-benefits-left h1 {
+      font-size: 3.5em;
+      color: white;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    .key-benefits-right {
+      width: 60%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      background-color: #9A3EE0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .benefit-item {
+      color: white;
+      border: 1px solid white;
+      margin-bottom: -1px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .benefit-item:first-child {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    .benefit-item:last-child {
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+    }
+
+    .key-benefits-right .benefit-item:nth-child(2) .benefit-header,
+    .key-benefits-right .benefit-item:nth-child(2) .benefit-content-hidden {
+        background-color: #E4C7FF !important; /* Added !important */
+    }
+    .key-benefits-right .benefit-item:nth-child(4) .benefit-header,
+    .key-benefits-right .benefit-item:nth-child(4) .benefit-content-hidden {
+        background-color: #E4C7FF !important; /* Added !important */
+    }
+
+    .benefit-header {
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      cursor: pointer;
+      font-family: 'amadeus_neuemedium', Arial, sans-serif;
+      font-size: 1.2em;
+      background-color: #B650FF;
+      transition: background-color 0.3s ease;
+      position: relative;
+      z-index: 3;
+    }
+
+    .benefit-header:hover {
+      background-color: #9A3EE0;
+    }
+
+    .benefit-number {
+      font-family: 'amadeus_neuebold', Arial, sans-serif;
+      font-size: 1.5em;
+      color: white;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+
+    .benefit-title {
+      flex-grow: 1;
+      color: white;
+    }
+
+    .toggle-icon {
+      font-size: 1.8em;
+      font-weight: bold;
+      margin-left: 10px;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+
+    .benefit-item.expanded .toggle-icon {
+      transform: rotate(45deg);
+    }
+
+    .benefit-content-hidden {
+      display: none;
+    }
+
+    .benefit-overlay-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #9A3EE0;
+        z-index: 5;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(100%);
+        transition: transform 0.5s ease-out, opacity 0.5s ease-out, visibility 0s 0.5s;
+        padding: 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        color: white;
+    }
+
+    .benefit-overlay-content.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        transition: transform 0.5s ease-out, opacity 0.5s ease-out, visibility 0s;
+    }
+
+    .benefit-overlay-content .close-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 2em;
+        cursor: pointer;
+        z-index: 6;
+    }
+    .benefit-overlay-content h2 {
+        font-family: 'amadeus_neuemedium', Arial, sans-serif;
+        font-size: 2em;
+        margin-bottom: 15px;
+        color: white;
+    }
+    .benefit-overlay-content p {
+        font-size: 1.1em;
+        line-height: 1.6;
+        color: white;
+    }
+
+    .video-container {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        aspect-ratio: 16 / 9;
+        background-color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .video-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .key-features-layout-new {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+      padding: 100px 5% 5% 5%;
+      box-sizing: border-box;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .key-features-left-new {
+      width: 35%;
+      flex-shrink: 0;
+      text-align: left;
+      padding-right: 30px;
+      box-sizing: border-box;
+    }
+
+    .key-features-left-new h1 {
+      font-size: 3.5em;
+      color: white;
+      margin: 0;
+      line-height: 1.1;
+    }
+
+    .key-features-left-new .subtitle {
+      font-size: 1.1em;
+      color: white;
+      margin-top: 1rem;
+      line-height: 1.4;
+    }
+
+    .key-features-right-new {
+      width: 60%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--feature-gap);
+      overflow: hidden;
+    }
+
+    .feature-item-new {
+      color: white;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-sizing: border-box;
+      flex: 0 0 calc((100% - 2 * var(--feature-gap)) / 3);
+      max-width: calc((100% - 2 * var(--feature-gap)) / 3);
+    }
+
+    .feature-item-new .feature-icon {
+        height: 60px;
+        width: auto;
+        margin-right: 0;
+        margin-bottom: 15px;
+        flex-shrink: 0;
+    }
+
+    .feature-item-new .feature-content {
+        flex-grow: 1;
+    }
+
+    .feature-item-new h2 {
+      font-family: 'amadeus_neuemedium', Arial, sans-serif;
+      font-size: 1.5em;
+      color: white;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+
+    .feature-item-new p {
+      font-size: 1em;
+      line-height: 1.5;
+      color: #C5D5F9;
+      margin-bottom: 0;
+    }
+
+    .key-features-right-new .feature-item-new:nth-child(4),
+    .key-features-right-new .feature-item-new:nth-child(5) {
+      flex: 0 0 calc((100% - var(--feature-gap)) / 2);
+      max-width: calc((100% - var(--feature-gap)) / 2);
+      margin-top: var(--feature-gap);
+    }
+
+    .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        width: 100%;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .testimonial-video-item {
+        background-color: #000835;
+        border-radius: 10px;
+        overflow: hidden;
+        aspect-ratio: 16 / 9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .testimonial-video-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .testimonial-quote-item {
+        background-color: #B650FF;
+        padding: 30px;
+        border-radius: 10px;
+        color: #000835;
+        font-style: italic;
+        line-height: 1.6;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .testimonial-quote-item p {
+        margin-bottom: 15px;
+        font-size: 1.1em;
+        color: #000835;
+    }
+
+    .testimonial-quote-item .author {
+        font-weight: bold;
+        font-style: normal;
+        font-size: 1em;
+        color: #000835;
+        text-align: right;
+    }
+
+    @media screen and (max-width: 768px) {
+      .key-features-layout-new {
+        flex-direction: column;
+        padding-top: 80px !important;
+        align-items: center;
+        text-align: center;
+      }
+      .key-features-left-new {
+        width: 100%;
+        margin-bottom: 30px;
+        text-align: center;
+        padding-right: 0;
+      }
+      .key-features-left-new h1 {
+        font-size: 2.5em;
+      }
+      .key-features-right-new {
+        width: 90%;
+        padding-left: 0;
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .feature-item-new {
+        margin-bottom: 0;
+        padding: 10px 0;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+      .feature-item-new .feature-icon {
+        height: 40px;
+        margin-bottom: 10px;
+      }
+      .feature-item-new h2 {
+        font-size: 1.2em;
+      }
+      .feature-item-new p {
+        font-size: 0.9em;
+      }
+      .key-features-right-new .feature-item-new:nth-child(4),
+      .key-features-right-new .feature-item-new:nth-child(5) {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-top: 0;
+      }
+    }
+
+    .how-we-achieve-success-layout {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding: 100px 5% 5% 5%;
+        box-sizing: border-box;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .how-we-achieve-success-layout h1 {
+        font-size: 2.8em;
+        color: white;
+        margin-bottom: 15px;
+        text-align: center;
+        line-height: 1.1;
+    }
+
+    .how-we-achieve-success-layout .subtitle {
+        font-size: 1em;
+        color: white;
+        margin-bottom: 40px;
+        text-align: center;
+        line-height: 1.4;
+    }
+
+    .how-we-achieve-success-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: flex-start;
+        width: 100%;
+        gap: 30px;
+    }
+
+    .how-we-achieve-success-item {
+        flex: 1;
+        text-align: left;
+        color: white;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .how-we-achieve-success-item .item-number {
+        font-family: 'amadeus_neueregular', Arial, sans-serif;
+        color: #FF514D;
+        line-height: 1;
+        margin-bottom: 15px;
+        display: block;
+    }
+
+    .how-we-achieve-success-item .item-number.number-1 {
+        font-size: 6em;
+    }
+
+    .how-we-achieve-success-item .item-number.number-2 {
+        font-size: 9em;
+    }
+
+    .how-we-achieve-success-item .item-number.number-3 {
+        font-size: 6em;
+    }
+
+    .how-we-achieve-success-item h2 {
+        font-family: 'amadeus_neuebold', Arial, sans-serif;
+        font-size: 1.3em;
+        color: white;
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+
+    .how-we-achieve-success-item p {
+        font-size: 0.9em;
+        line-height: 1.5;
+        color: #C5D5F9;
+        margin-bottom: 0;
+    }
+
+    .trusted-partner-layout {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        padding: 100px 5% 5% 5%;
+        box-sizing: border-box;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .trusted-partner-layout h1 {
+        font-size: 2.5em;
+        color: white;
+        margin-bottom: 10px;
+        text-align: center;
+        line-height: 1.1;
+    }
+
+    .trusted-partner-layout .subtitle {
+        font-size: 0.9em;
+        color: white;
+        margin-bottom: 30px;
+        text-align: center;
+        line-height: 1.4;
+    }
+
+    .trusted-partner-layout .amadeus-logo {
+        height: 60px;
+        margin-bottom: 30px;
+        object-fit: contain;
+    }
+    /* New style for the text-based Amadeus logo on trusted partner slide */
+    .amadeus-text-logo-large {
+        font-family: 'amadeus_neuebold', Arial, sans-serif; /* Use the bold font */
+        font-size: 5em; /* Large size */
+        color: white;
+        text-transform: uppercase;
+        margin-bottom: 30px; /* Space below the logo */
+        line-height: 1;
+    }
+
+
+    .trusted-partner-stats {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 100%;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+
+    .trusted-partner-stat-item {
+        text-align: center;
+        margin: 10px;
+    }
+
+    .trusted-partner-stat-item .stat-value {
+        font-family: 'amadeus_neueregular', Arial, sans-serif;
+        font-size: 3.5em;
+        color: #FF514D;
+        line-height: 1;
+        margin-bottom: 5px;
+    }
+
+    .trusted-partner-stat-item .stat-label {
+        font-size: 0.9em;
+        color: white;
+    }
+
+    @media screen and (max-width: 768px) {
+      .how-we-achieve-success-layout {
+        padding-top: 80px !important;
+      }
+      .how-we-achieve-success-layout h1 {
+        font-size: 2.5em;
+      }
+      .how-we-achieve-success-content {
+        flex-direction: column;
+        gap: 20px;
+      }
+      .how-we-achieve-success-item {
+        padding: 0;
+      }
+      .how-we-achieve-success-item .item-number.number-1,
+      .how-we-achieve-success-item .item-number.number-2,
+      .how-we-achieve-success-item .item-number.number-3 {
+        font-size: 4em;
+      }
+      .how-we-achieve-success-item h2 {
+        font-size: 1.2em;
+      }
+      .how-we-achieve-success-item p {
+        font-size: 0.9em;
+      }
+
+      .trusted-partner-layout {
+        padding-top: 80px !important;
+      }
+      .trusted-partner-layout h1 {
+        font-size: 2.5em;
+      }
+      .trusted-partner-stats {
+        flex-direction: column;
+      }
+      .trusted-partner-stat-item {
+        margin: 10px 0;
+      }
+      .trusted-partner-stat-item .stat-value {
+        font-size: 3em;
+      }
+
+      .contact-form-grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+      }
+    }
+
+    @media screen and (min-width: 1400px) {
+      html {
+        font-size: 20px;
+      }
+      .slide-content-wrapper,
+      .section-layout-wrapper,
+      .key-benefits-layout,
+      .key-features-layout-new,
+      .testimonial-grid,
+      .how-we-achieve-success-layout,
+      .trusted-partner-layout {
+        max-width: 1800px;
+      }
+      .title-box {
+        max-width: 900px;
+      }
+    }
+
+    /* Hide menu button and logo on the unlock (form) page */
+    #unlock .top-nav,
+    #unlock .menu-icon,
+    #unlock .outpayce-logo-small {
+        display: none !important;
+    }
+    .top-nav .menu-icon {
+        /* Remove all custom height, width, and margin adjustments */
+        /* height: 32px !important; */
+        /* width: 40px !important; */
+        /* margin-right: 56px !important; */
+        /* margin-right: 96px !important; */
+        /* Remove vertical-align: middle; */
+    }
+    .outpayce-logo-small {
+        height: 64px !important;
+        width: auto !important;
+        margin-left: 48px !important; /* Move a bit more to the right */
+    }
+    /* Hide menu button and logo on the unlock (form) page using general sibling selector */
+    body #unlock:not([style*='display: none']) ~ .top-nav,
+    body #unlock:not([style*='display: none']) ~ .top-nav .menu-icon,
+    body #unlock:not([style*='display: none']) ~ .top-nav .outpayce-logo-small {
+        display: none !important;
+    }
+
+    /* Talk to us heading and description styling */
+    .talk-to-us-row {
+      display: flex;
+      align-items: flex-end;
+      margin-bottom: 48px;
+      margin-left: 36px;
+      gap: 48px;
+    }
+    .talk-to-us-row h1 {
+      font-size: 3.2em;
+      margin: 0 48px 0 0;
+      color: white;
+      line-height: 1.1;
+    }
+    .talk-to-us-row .talk-to-us-desc {
+      color: #FF514D;
+      font-weight: bold;
+      font-size: 1.3em;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    /* Contact form (Talk to us) - underline only, wide fields, 2 columns */
+    .pt-page .contact-form-grid {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 50px 60px !important;
+      width: 100%;
+      max-width: 1400px !important;
+      margin: 0 !important;
+      box-sizing: border-box !important;
+      padding-left: 36px !important;
+      padding-right: 36px !important;
+    }
+    .pt-page .contact-form-grid .form-field {
+      margin-bottom: 0 !important;
+    }
+    .pt-page .contact-form-grid input,
+    .pt-page .contact-form-grid textarea {
+      background: transparent !important;
+      border: none !important;
+      border-bottom: 2px solid #FF514D !important;
+      border-radius: 0 !important;
+      color: #FF514D !important;
+      padding: 12px 0 !important;
+      font-size: 1.1em !important;
+      width: 100% !important;
+      outline: none !important;
+      margin-bottom: 0 !important;
+      box-sizing: border-box !important;
+    }
+    .pt-page .contact-form-grid input:focus,
+    .pt-page .contact-form-grid textarea:focus {
+      border-bottom: 2px solid #fff !important;
+    }
+    .pt-page .contact-form-grid label {
+      color: #FF514D !important;
+      font-size: 1em !important;
+      margin-bottom: 4px !important;
+      font-weight: normal !important;
+    }
+    .pt-page .contact-form-grid .form-field.button-row {
+      display: flex !important;
+      align-items: flex-end !important;
+      justify-content: flex-end !important;
+    }
+    .pt-page .contact-form-grid .cta-button,
+    .pt-page .contact-form-grid button[type='submit'] {
+      background: transparent !important;
+      border: 2px solid #FFFFFF !important;
+      color: #FFFFFF !important;
+      font-size: 1em !important;
+      padding: 6px 24px !important;
+      border-radius: 4px !important;
+      width: auto !important;
+      min-width: 80px !important;
+      transition: background 0.3s, color 0.3s, border 0.3s !important;
+      box-shadow: none !important;
+      margin-left: auto !important;
+      margin-right: 0 !important;
+      display: block !important;
+    }
+    .pt-page .contact-form-grid .cta-button:hover,
+    .pt-page .contact-form-grid button[type='submit']:hover {
+      background: #FF514D !important;
+      color: #fff !important;
+      border-color: #FF514D !important;
+    }
+  </style>
+<style>
+    /* --- FINAL RESPONSIVE, ALIGNMENT & SIZING STYLES --- */
+
+    /* 0. Set a responsive base font size for the whole document */
+    html {
+        font-size: calc(14px + 0.25vw);
+    }
+    
+    @media screen and (max-width: 1440px) {
+      html {
+        font-size: calc(12px + 0.2vw); /* Slightly reduce the base size for laptops */
+      }
+    }
+
+
+    /* 1. Define the master alignment variable */
+    :root {
+        --content-alignment-padding: 8vw; 
+    }
+
+    /* 2. Set position of the Top Navigation */
+    .top-nav {
+        left: 0 !important;
+        width: 100% !important;
+        padding-left: var(--content-alignment-padding) !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 3. Apply alignment and ROBUST vertical padding to ALL main content wrappers */
+    .slide-content-wrapper,
+    .section-layout-wrapper,
+    .key-benefits-layout,
+    .key-features-layout-new,
+    .how-we-achieve-success-layout,
+    .trusted-partner-layout,
+    .slide-content-two-column {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding-left: var(--content-alignment-padding) !important;
+        padding-right: var(--content-alignment-padding) !important;
+       padding-top: 18vh !important;
+        padding-bottom: 8vh !important;
+        margin: 0 auto !important;
+        max-width: 1800px;
+    }
+    
+    .content-padded-left {
+        padding-left: calc(var(--content-alignment-padding) + 120px) !important;
+    }
+
+
+    /* 4. Fluid sizing for key text elements */
+    .trusted-partner-stat-item .stat-value { font-size: clamp(3.5rem, 8vw, 6rem) !important; }
+    .large-stat { font-size: clamp(3rem, 7vw, 5.5rem) !important; }
+    .title-box h1 { font-size: clamp(2rem, 5vw, 3rem) !important; }
+    .section-intro-box h1 { font-size: clamp(2.2rem, 6vw, 4rem) !important; }
+    .how-we-achieve-success-item .item-number { font-size: clamp(4rem, 12vw, 9rem) !important; }
+    .flipbook-page-number { font-size: clamp(6rem, 15vw, 10rem) !important; }
+
+    /* 5. Styles for the "Trusted Partner" slide */
+    .trusted-partner-layout {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
+        text-align: left !important;
+    }
+    .trusted-partner-heading, .trusted-partner-subheading, .amadeus-text-logo-large {
+        /* These styles are unchanged */
+        margin-bottom: 1.5rem; color: white;
+    }
+    .trusted-partner-heading { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; }
+    .trusted-partner-heading .bold-line { font-family: 'amadeus_neuebold', Arial, sans-serif; display: block; }
+    .trusted-partner-subheading { font-size: 1.1rem; }
+    .amadeus-text-logo-large { font-size: clamp(3rem, 7vw, 5rem); text-transform: uppercase; margin-bottom: 3rem; line-height: 1; font-family: 'amadeus_neuebold', Arial, sans-serif; }
+    
+    .trusted-partner-layout .trusted-partner-stats {
+        display: flex;
+        width: 100%;
+        justify-content: space-between; /* This spreads the items out */
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+    .trusted-partner-layout .trusted-partner-stat-item { text-align: left; }
+
+    /* 6. Responsive overrides for smaller screens */
+    @media screen and (max-width: 1024px) {
+        .key-benefits-layout, .key-features-layout-new, .slide-content-two-column,
+        .section-layout-wrapper, .new-slide-6-layout .top-section-6, .title-box,
+        .trusted-partner-layout {
+            text-align: left !important;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="unlock-container" id="unlock">
+  <div class="form-overlay-box">
+    <div class="form-header">
+        <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bfdb26f48-a602-4444-a7f0-be5efec77ab7%7D_Outpayce_secondary_logo_white_solid.png" loading="lazy" alt="Outpayce logo" class="unlock-logo" />
+        <h1>Welcome to the <br>One Click Stay eBook</h1>
+    </div>
+    <form id="unlock-form" onsubmit="unlockContent(); return false;">
+        <div class="form-content-grid">
+            <div class="form-inputs">
+                <input type="text" name="firstName" placeholder="First Name">
+                <input type="text" name="lastName" placeholder="Last Name">
+                <input type="email" name="email" placeholder="Business Email">
+                <input type="text" name="company" placeholder="Company Name">
+                <input type="tel" name="phone" placeholder="Phone Number">
+                <input type="text" name="country" placeholder="Country">
+            </div>
+            <div class="form-actions">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="consent1" name="consent1">
+                    <label for="consent1">By checking this box, I consent to the receipt of marketing communications from Outpayce about its products and services and other news that may be of interest.</label>
+                </div>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="consent2" name="consent2">
+                    <label for="consent2">By checking this box I consent to the collection and use of my data for the purposes of this offer, as detailed in the Privacy Notice, and to the Amadeus Group T&Cs.</label>
+                </div>
+                <button type="submit" class="cta-button unlock-submit">Submit</button>
+            </div>
+        </div>
+    </form>
+  </div>
+</div>
+
+<div class="top-nav">
+    <div class="nav-left-links"> <a onclick="goToSlide(1)">
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Baefec152-6d9f-4509-9f3d-bdc351d009d2%7D_Menu_icon.png" loading="lazy" alt="Navigation menu icon" aria-hidden="true" class="menu-icon" />
+        </a>
+        <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bfdb26f48-a602-4444-a7f0-be5efec77ab7%7D_Outpayce_secondary_logo_white_solid.png" loading="lazy" alt="Outpayce logo" class="outpayce-logo-small" style="height:64px;margin-left:32px;" />
+    </div>
+</div>
+
+<button class="nav-button left" onclick="prevArrow()"></button>
+<button class="nav-button right" onclick="nextArrow()"></button>
+<div id="page-counter"></div>
+
+<div class="pt-pages">
+  <div class="pt-page title-slide pt-page-current">
+    <div class="slide-content-wrapper">
+      <div class="title-box">
+        <h1>Turn Payments into Profit</h1>
+        <p class="subtitle">The Power of Outpayce B2B Wallet</p>
+        <p>Unlock efficiency, control, and new revenue streams with Outpayce B2B Wallet.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pt-page section-content-slide" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Baf0c3c06-7eb8-4f7a-88d4-0cd833e8c982%7D_1920_x_1080_Dark_Sky.png');">
+    <div class="section-layout-wrapper">
+      <div class="section-title-area">
+        <h1>Contents</h1>
+      </div>
+      <div class="section-content-grid">
+        <div class="section-content-box" onclick="goToSlide(2)">The Payments Industry</div>
+        <div class="section-content-box" onclick="goToSlide(8)">One Click Stay</div>
+        <div class="section-content-box" onclick="goToSlide(18)">How We Achieve Success</div>
+        <div class="section-content-box" onclick="goToSlide(22)">Talk to Us</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pt-page section-intro-page" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Be0e604f8-422f-40ab-a9d8-59e9ee9067a1%7D_a_person_looking_at_the_phone.jpg');">
+    <div class="section-intro-box" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Baf0c3c06-7eb8-4f7a-88d4-0cd833e8c982%7D_1920_x_1080_Dark_Sky.png');">
+      <h1 class="allow-wrap">Industry Challenges</h1>
+    </div>
+  </div>
+
+  <div class="pt-page dark-text-slide" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Baf0c3c06-7eb8-4f7a-88d4-0cd833e8c982%7D_1920_x_1080_Dark_Sky.png');">
+    <div class="slide-content-two-column">
+      <div class="left-column">
+        <div class="large-stat-container">
+          <p class="stat-pre-text">Are expected to reach</p>
+          <h2 class="large-stat">US$38.07tn <br>by 2030</h2>
+        </div>
+        <div class="small-text-box">
+          <p>The value of virtual card payments will grow 235 percent by 2029, rising from $5.2 trillion in 2025 to more than $17.4 trillion.</p>
+        </div>
+      </div>
+      <div class="right-column">
+        <h1>Digital payments <br>are soaring</h1>
+        <p>Driven by business digitalization, customer convenience, and the need for speed, online payments are on the rise - and show no sign of slowing down.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="pt-page dark-text-slide" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bcc77f1a5-52b3-42d9-9a87-29d01df44b20%7D_1920_x_1080_Dark_Sky_left_gradient.png');">
+    <div class="slide-content-wrapper content-padded-left">
+      <div class="problem-solution-grid">
+        <div class="solution-card">
+          <div class="card-number">1</div>
+          <div class="card-title">Corporate Adoption</div>
+          <div class="card-text">"Over 70% of large enterprises plan to increase their use of virtual cards for supplier payments by 2026."</div>
+          <div class="card-source">Source: Visa – The Rise and Staying Power of Virtual Cards for B2B.</div>
+        </div>
+        <div class="solution-card">
+          <div class="card-number">2</div>
+          <div class="card-title">Efficiency Gains</div>
+          <div class="card-text">"Companies using virtual cards report up to 60% faster reconciliation and *30% fewer payment errors."</div>
+          <div class="card-source">Source: Omega Venture Partners.</div>
+        </div>
+        <div class="solution-card">
+          <div class="card-number">3</div>
+          <div class="card-title">Security Advantage</div>
+          <div class="card-text">"Virtual cards reduce fraud risk by up to 80% compared to traditional corporate cards."</div>
+          <div class="card-source">Source: American Express – Virtual Cards: The Future of B2B Payments.</div>
+        </div>
+        <div class="solution-card">
+          <div class="card-number">4</div>
+          <div class="card-title">Environmental Impact</div>
+          <div class="card-text">"Digital payments can reduce paper usage by over 90%, supporting corporate sustainability goals."</div>
+          <div class="card-source">Source: Omega Venture Partners</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Additional slides inspired by the design guide -->
+  <!-- Digital payments adoption statistics slide -->
+  <div class="pt-page dark-text-slide" style="background-color: #000835; background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B83fa9be1-2598-46f8-acb5-673b170fa981%7D_1920_x_1080_Violet.png');">
+    <div class="slide-content-two-column">
+      <div class="left-column">
+        <div class="large-stat-container">
+          <h2 class="large-stat">92%<br>of consumers</h2>
+          <div class="small-text-box">
+            <p>Use digital payments across the U.S. and Europe.</p>
+          </div>
+        </div>
+      </div>
+      <div class="right-column">
+        <h1>Digital payments adoption is high</h1>
+        <p>Consumers are embracing digital payments in record numbers as mobile wallets and contactless technologies become ubiquitous. Businesses must adapt to this reality or risk falling behind.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quiz slide: ask readers about digital payments adoption -->
+  <div class="pt-page" style="background-color: #000835; background-image: url('https://placehold.co/1920x1080/000835/FFFFFF?text=Digital+Adoption+Quiz'); background-size: cover; background-position: center;">
+    <div class="slide-content-wrapper">
+      <div class="quiz-container">
+        <h1 class="quiz-question">How many consumers do you think have used digital payments in the past year?</h1>
+        <div class="quiz-answers">
+          <a class="quiz-answer-box" onclick="nextArrow()"><span>50%</span></a>
+          <a class="quiz-answer-box" onclick="nextArrow()"><span>70%</span></a>
+          <a class="quiz-answer-box" onclick="nextArrow()"><span>90%</span></a>
+          <a class="quiz-answer-box" onclick="nextArrow()"><span>100%</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Why It's Useful slide summarising the value proposition of the wallet -->
+  <div class="pt-page dark-text-slide" style="background-color: #000835; background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B83fa9be1-2598-46f8-acb5-673b170fa981%7D_1920_x_1080_Violet.png');">
+    <div class="slide-content-two-column">
+      <div class="left-column">
+        <h1>Why It’s Useful?</h1>
+        <p>One Click Stay’s B2B Wallet empowers travel sellers with powerful advantages:</p>
+        <ul>
+          <li>Boost efficiency by automating payment and reconciliation processes.</li>
+          <li>Reduce costs and errors with virtual card controls.</li>
+          <li>Enhance security & compliance through customizable limits.</li>
+          <li>Access a global network of currencies and suppliers.</li>
+        </ul>
+      </div>
+      <div class="right-column">
+        <img src="https://placehold.co/600x400/000000/FFFFFF?text=Why+It%27s+Useful" loading="lazy" alt="Illustration of utility" style="max-width:100%; border-radius:8px;" />
+      </div>
+    </div>
+  </div>
+  
+  <div class="pt-page section-intro-page" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bd9af6c27-4791-47ec-9a65-48c09189855f%7D_jonas-leupe-0IVop5v4MMU-unsplash_flipped.JPG');">
+    <div class="section-intro-box" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Baf0c3c06-7eb8-4f7a-88d4-0cd833e8c982%7D_1920_x_1080_Dark_Sky.png');">
+      <h1 class="allow-wrap">Industry Challenges</h1>
+    </div>
+  </div>
+
+  <div class="pt-page dark-text-slide" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Baf0c3c06-7eb8-4f7a-88d4-0cd833e8c982%7D_1920_x_1080_Dark_Sky.png');">
+    <div class="slide-content-wrapper new-slide-6-layout">
+      <div class="top-section-6">
+        <div class="left-problem-box">
+          <p>Despite the $38 trillion surge in digital payments, travel sellers are still lagging—charging more, paying more, and frustrating guests with fragmented, slow, and error-prone systems.</p>
+        </div>
+        <div class="right-challenges-grid">
+          <div class="challenge-card">
+            <h2>Efficiency is lost.</h2>
+            <p>More than 60% of global travel companies say manual payment and reconciliation processes are eating into their margins.</p>
+            <span class="challenge-source">Source: BusinessWire, 2024</span>
+          </div>
+          <div class="challenge-card">
+            <h2>Compliance is tough.</h2>
+            <p>Almost 70% of travel sellers still lack automated payment systems, putting them at risk of fraud and non-compliance.</p>
+            <span class="challenge-source">Source: Travel Tech Show, 2024</span>
+          </div>
+          <div class="challenge-card">
+            <h2>Margins are under pressure.</h2>
+            <p>Banks charge an average 2% FX fee for cross-border payments – plus high insurance costs and fraud exposure when using physical cards.</p>
+            <span class="challenge-source">Source: Amadeus</span>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-call-to-action">
+        <h1>Here is where B2BW Can Make the Difference</h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="pt-page" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Ba8d9fb53-f1ba-47cf-bb4e-0b6c2845a5a2%7D_Laughing_young_woman_lying_on_a_bench_using_cell_phone_%281%29.jpg');">
+    <div class="slide-content-wrapper">
+      <div class="quiz-container">
+        <h1 class="quiz-question">How much do you think virtual cards can reduce payment fraud risk?</h1>
+        <div class="quiz-answers">
+          <a class="quiz-answer-box" onclick="nextArrow()"><span>Up to 40%</span></a>
+          <a class="quiz-answer-box" onclick="nextArrow()"><span>Up to 60%</span></a>
+          <a class="quiz-answer-box" onclick="nextArrow()"><span>Up to 80%</span></a>
+          <a class="quiz-answer-box" onclick="nextArrow()"><span>Up to 100%</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pt-page section-intro-page" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B2d8f0256-545a-4a0a-b344-df3cb670447d%7D_GettyImages-1262875748.png');">
+    <div class="section-intro-box" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B83fa9be1-2598-46f8-acb5-673b170fa981%7D_1920_x_1080_Violet.png');">
+      <h1 style="background-image: none;">One Click Stay</h1>
+    </div>
+  </div>
+
+  <div class="pt-page dark-text-slide" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B83fa9be1-2598-46f8-acb5-673b170fa981%7D_1920_x_1080_Violet.png');">
+    <div class="slide-content-wrapper" style="padding: 5% 5%; justify-content: center;">
+      <div class="video-container">
+        <img src="https://placehold.co/900x506/000000/FFFFFF?text=Placeholder+Video" alt="Placeholder Video">
+      </div>
+    </div>
+  </div>
+
+  <div class="pt-page section-intro-page" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Be0e604f8-422f-40ab-a9d8-59e9ee9067a1%7D_a_person_looking_at_the_phone.jpg');">
+    <div class="section-intro-box" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B83fa9be1-2598-46f8-acb5-673b170fa981%7D_1920_x_1080_Violet.png');">
+      <h1 class="allow-wrap">How can you benefit from B2B Wallet?</h1>
+    </div>
+  </div>
+
+  <div class="pt-page dark-text-slide" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B83fa9be1-2598-46f8-acb5-673b170fa981%7D_1920_x_1080_Violet.png');">
+    <div class="slide-content-wrapper key-features-layout-new">
+      <div class="key-features-left-new">
+        <h1>Key Features</h1>
+        <p class="subtitle">A multi-currency payments hub that helps travel agencies pay any supplier with virtual cards.</p>
+      </div>
+      <div class="key-features-right-new">
+        <div class="feature-item-new">
+          <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B0b87b6a2-9ccd-4608-9a7c-e2a09426d175%7D_icon_clock.png" alt="Icon" class="feature-icon">
+          <div class="feature-content">
+            <h2>Pay any Supplier</h2>
+            <p>• One user solution for all suppliers – airlines, hotels, and more.</p>
+            <p>• Single-use virtual cards for extra control.</p>
+            <p>• No hidden fees, no physical cards needed.</p>
+          </div>
+        </div>
+        <div class="feature-item-new">
+          <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B0b87b6a2-9ccd-4608-9a7c-e2a09426d175%7D_icon_clock.png" alt="Icon" class="feature-icon">
+          <div class="feature-content">
+            <h2>Multiple payment options</h2>
+            <p>• 40+ card types: prepaid, debit, and credit.</p>
+            <p>• Support for 40+ currencies.</p>
+            <p>• One wallet to manage everything.</p>
+          </div>
+        </div>
+        <div class="feature-item-new">
+          <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B0b87b6a2-9ccd-4608-9a7c-e2a09426d175%7D_icon_clock.png" alt="Icon" class="feature-icon">
+          <div class="feature-content">
+            <h2>Earn More, Spend Less</h2>
+            <p>• Get rebates on every transaction.</p>
+            <p>• Reduce FX and operational costs.</p>
+          </div>
+        </div>
+        <div class="feature-item-new">
+          <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B0b87b6a2-9ccd-4608-9a7c-e2a09426d175%7D_icon_clock.png" alt="Icon" class="feature-icon">
+          <div class="feature-content">
+            <h2>Secure Payments</h2>
+            <p>• Full fraud and supplier default protection.</p>
+            <p>• Custom spending limits and card controls.</p>
+            <p>• PCI-compliant for peace of mind at no extra cost.</p>
+          </div>
+        </div>
+        <div class="feature-item-new">
+          <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B0b87b6a2-9ccd-4608-9a7c-e2a09426d175%7D_icon_clock.png" alt="Icon" class="feature-icon">
+          <div class="feature-content">
+            <h2>Automate & Optimize</h2>
+            <p>• Automate payment and reconciliation.</p>
+            <p>• Smart payment selection.</p>
+            <p>• No system integration needed to get started.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ 
+  <div class="pt-page dark-text-slide" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B83fa9be1-2598-46f8-acb5-673b170fa981%7D_1920_x_1080_Violet.png');">
+    <div class="slide-content-wrapper key-benefits-layout">
+      <div class="key-benefits-left">
+        <h1>Key Benefits</h1>
+      </div>
+      <div class="key-benefits-right">
+        <div class="benefit-overlay-content">
+            <button class="close-button" onclick="closeBenefitOverlay()">+</button>
+            <h2 id="overlay-title"></h2>
+            <p id="overlay-text"></p>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-header" data-benefit-id="1">
+            <span class="benefit-number">1</span>
+            <span class="benefit-title">Financial Gains</span>
+            <span class="toggle-icon">+</span>
+          </div>
+          <div class="benefit-content-hidden">
+            <p>One Click Stay helps you achieve significant financial gains by reducing operational costs, minimizing payment errors, and optimizing foreign exchange fees. Our automated systems ensure that every transaction is processed efficiently, leading to direct savings and improved profitability for your business.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-header" data-benefit-id="2">
+            <span class="benefit-number">2</span>
+            <span class="benefit-title">Operational Efficiency</span>
+            <span class="toggle-icon">+</span>
+          </div>
+          <div class="benefit-content-hidden">
+            <p>Streamline your entire payment workflow with One Click Stay. From automated virtual card generation to real-time tracking and reconciliation, our solution eliminates manual tasks, reduces administrative burden, and frees up your team to focus on more strategic activities. This leads to faster processing times and enhanced overall productivity.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-header" data-benefit-id="3">
+            <span class="benefit-number">3</span>
+            <span class="benefit-title">Risk Management & Compliance</span>
+            <span class="toggle-icon">+</span>
+          </div>
+          <div class="benefit-content-hidden">
+            <p>Mitigate fraud risks and ensure full compliance with industry regulations through One Click Stay's robust security features. Our platform provides enhanced control over spending, detailed audit trails, and adherence to global financial standards, giving you peace of mind and protecting your business from potential threats.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-header" data-benefit-id="4">
+            <span class="benefit-number">4</span>
+            <span class="benefit-title">Global Acceptance & Reach</span>
+            <span class="toggle-icon">+</span>
+          </div>
+          <div class="benefit-content-hidden">
+            <p>Expand your business reach with seamless international payments. One Click Stay supports multi-currency transactions and offers access to a vast global network of payment providers, enabling you to conduct business effortlessly across borders. This broad acceptance ensures your operations are never limited by geographical boundaries.</p>
+          </div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-header" data-benefit-id="5">
+            <span class="benefit-number">5</span>
+            <span class="benefit-title">Maximizing Value Through Optimization</span>
+            <span class="toggle-icon">+</span>
+          </div>
+          <div class="benefit-content-hidden">
+            <p>One Click Stay is designed to help you maximize value at every step of the payment process. By optimizing payment flows, reducing hidden costs, and providing comprehensive analytics, our solution empowers you to make informed decisions that drive profitability and ensure long-term financial health for your travel business.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- New slide: Three Reasons to Adopt B2B Wallet -->
+  <div class="pt-page dark-text-slide" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B83fa9be1-2598-46f8-acb5-673b170fa981%7D_1920_x_1080_Violet.png');">
+    <div class="slide-content-wrapper">
+      <h1 style="text-align: left;">Three Reasons to Adopt B2B Wallet</h1>
+      <div class="reasons-grid">
+        <div class="reason-item">
+          <h2>1</h2>
+          <p><strong>Efficiency &amp; Speed</strong><br>Automate payments and reconciliation for faster, frictionless transactions that save time and resources.</p>
+        </div>
+        <div class="reason-item">
+          <h2>2</h2>
+          <p><strong>Security &amp; Control</strong><br>Benefit from single‑use virtual cards with customizable limits, reducing fraud and ensuring compliance.</p>
+        </div>
+        <div class="reason-item">
+          <h2>3</h2>
+          <p><strong>Financial Gains</strong><br>Earn rebates and optimize FX, turning everyday payments into additional revenue opportunities.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- New slide: Getting Started -->
+  <div class="pt-page dark-text-slide" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B8a9ed5c6-4baa-44be-bf54-53bc5949e87f%7D_1920_x_1080_Crimson.png');">
+    <div class="slide-content-wrapper">
+      <h1 style="text-align: left;">Getting Started</h1>
+      <p class="subtitle" style="text-align: left; margin-bottom:2rem;">Begin your journey with Outpayce B2B Wallet in three simple steps.</p>
+      <div class="getting-started-grid">
+        <div class="step-item">
+          <h2>Step 1</h2>
+          <p><strong>Contact Our Team</strong><br>Reach out to our specialists to discuss your needs and discover how B2B Wallet can fit into your workflow.</p>
+        </div>
+        <div class="step-item">
+          <h2>Step 2</h2>
+          <p><strong>Set Up &amp; Onboard</strong><br>We’ll help you configure your account, create virtual cards and integrate your suppliers without complex tech work.</p>
+        </div>
+        <div class="step-item">
+          <h2>Step 3</h2>
+          <p><strong>Start Paying &amp; Saving</strong><br>Begin making secure payments, earning rebates and gaining real‑time control over your expenses.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pt-page section-intro-page" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B6638b14b-2958-401a-98b7-ac674114de4c%7D_GettyImages-1495605351.jpeg');">
+    <div class="section-intro-box" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Baf0c3c06-7eb8-4f7a-88d4-0cd833e8c982%7D_1920_x_1080_Dark_Sky.png');">
+      <h1 class="allow-wrap">How does One Click Stay Work?</h1>
+    </div>
+  </div>
+
+  <div class="pt-page dark-text-slide" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Baf0c3c06-7eb8-4f7a-88d4-0cd833e8c982%7D_1920_x_1080_Dark_Sky.png');">
+    <div class="slide-content-wrapper" style="padding: 20px 5%; justify-content: center;">
+      <div class="flipbook-container" style="height: 100%;">
+        <div id="flipbook-page-1" class="flipbook-page">
+          <div class="left-content">
+            <div class="flipbook-page-number">1</div>
+            <h2 class="flipbook-tagline">Automated Virtual Card Generation</h2>
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B8667ea3c-ddb6-4706-8118-772d192bfb81%7D_Visual_Disability_2.png" class="flipbook-icon" alt="Icon">
+          </div>
+          <div class="right-image">
+            <div class="image-nav-wrapper">
+              <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B0b1c919b-be74-49e3-8cef-5818c4e16934%7D_luca-nicoletti-dzbSQkqZzUw-unsplash.jpg" alt="Automated Virtual Card Generation">
+              <div class="flipbook-nav"></div>
+            </div>
+          </div>
+        </div>
+        <div id="flipbook-page-2" class="flipbook-page">
+          <div class="left-content">
+            <div class="flipbook-page-number">2</div>
+            <h2 class="flipbook-tagline">Real-time Payment Tracking</h2>
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B8667ea3c-ddb6-4706-8118-772d192bfb81%7D_Visual_Disability_2.png" class="flipbook-icon" alt="Icon">
+          </div>
+          <div class="right-image">
+            <div class="image-nav-wrapper">
+              <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B562a99c5-d408-45bb-a50b-d729a82123cd%7D_andres-garcia-OgrfLCYqfVY-unsplash.jpg" alt="Real-time Payment Tracking">
+              <div class="flipbook-nav"></div>
+            </div>
+          </div>
+        </div>
+        <div id="flipbook-page-3" class="flipbook-page">
+          <div class="left-content">
+            <div class="flipbook-page-number">3</div>
+            <h2 class="flipbook-tagline">Automated Invoice Matching</h2>
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B8667ea3c-ddb6-4706-8118-772d192bfb81%7D_Visual_Disability_2.png" class="flipbook-icon" alt="Icon">
+          </div>
+          <div class="right-image">
+            <div class="image-nav-wrapper">
+              <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B85941813-91f8-4e34-83c3-3aea458ff37c%7D_shutterstock_722521165.jpg" alt="Automated Invoice Matching">
+              <div class="flipbook-nav"></div>
+            </div>
+          </div>
+        </div>
+        <div id="flipbook-page-4" class="flipbook-page">
+          <div class="left-content">
+            <div class="flipbook-page-number">4</div>
+            <h2 class="flipbook-tagline">Enhanced Security Measures</h2>
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B8667ea3c-ddb6-4706-8118-772d192bfb81%7D_Visual_Disability_2.png" class="flipbook-icon" alt="Icon">
+          </div>
+          <div class="right-image">
+            <div class="image-nav-wrapper">
+              <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bf162365e-928c-4eff-8d76-6f4c0a5f9c83%7D_pexels-pixabay-50987.jpg" alt="Enhanced Security Measures">
+              <div class="flipbook-nav"></div>
+            </div>
+          </div>
+        </div>
+        <div id="flipbook-page-5" class="flipbook-page">
+          <div class="left-content">
+            <div class="flipbook-page-number">5</div>
+            <h2 class="flipbook-tagline">Global Payment Network</h2>
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B8667ea3c-ddb6-4706-8118-772d192bfb81%7D_Visual_Disability_2.png" class="flipbook-icon" alt="Icon">
+          </div>
+          <div class="right-image">
+            <div class="image-nav-wrapper">
+              <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B4a7b2093-7e7e-4307-bd1a-cc5557192060%7D_mika-baumeister-bGZZBDvh8s4-unsplash2.jpg" alt="Global Payment Network">
+              <div class="flipbook-nav"></div>
+            </div>
+          </div>
+        </div>
+        <div id="flipbook-page-6" class="flipbook-page">
+          <div class="left-content">
+            <div class="flipbook-page-number">6</div>
+            <h2 class="flipbook-tagline">Customizable Workflows</h2>
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B8667ea3c-ddb6-4706-8118-772d192bfb81%7D_Visual_Disability_2.png" class="flipbook-icon" alt="Icon">
+          </div>
+          <div class="right-image">
+            <div class="image-nav-wrapper">
+              <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B269f3a74-c70c-4f22-93e9-e044d0133f23%7D_pexels-djordje-petrovic-590080-21024162.jpg" alt="Customizable Workflows">
+              <div class="flipbook-nav"></div>
+            </div>
+          </div>
+        </div>
+        <div id="flipbook-page-7" class="flipbook-page">
+          <div class="left-content">
+            <div class="flipbook-page-number">7</div>
+            <h2 class="flipbook-tagline">Comprehensive Reporting</h2>
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B8667ea3c-ddb6-4706-8118-772d192bfb81%7D_Visual_Disability_2.png" class="flipbook-icon" alt="Icon">
+          </div>
+          <div class="right-image">
+            <div class="image-nav-wrapper">
+              <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bafe5da11-0fd2-47c6-9125-245560c29056%7D_pexels-mikhail-nilov-7820616.jpg" alt="Comprehensive Reporting">
+              <div class="flipbook-nav"></div>
+            </div>
+          </div>
+        </div>
+        <div id="flipbook-page-8" class="flipbook-page">
+          <div class="left-content">
+            <div class="flipbook-page-number">8</div>
+            <h2 class="flipbook-tagline">Seamless Integration</h2>
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B8667ea3c-ddb6-4706-8118-772d192bfb81%7D_Visual_Disability_2.png" class="flipbook-icon" alt="Icon">
+          </div>
+          <div class="right-image">
+            <div class="image-nav-wrapper">
+              <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bcea6c8b3-f94d-4dba-b686-e3c56ba3aaf3%7D_pexels-pixabay-271639.jpg" alt="Seamless Integration">
+              <div class="flipbook-nav"></div>
+            </div>
+          </div>
+        </div>
+        <div id="flipbook-page-9" class="flipbook-page">
+          <div class="left-content">
+            <div class="flipbook-page-number">9</div>
+            <h2 class="flipbook-tagline">Cost Optimization</h2>
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B8667ea3c-ddb6-4706-8118-772d192bfb81%7D_Visual_Disability_2.png" class="flipbook-icon" alt="Icon">
+          </div>
+          <div class="right-image">
+            <div class="image-nav-wrapper">
+              <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B0c0f9dd5-e5b1-416f-804d-f4d1263f0778%7D_A_young_woman_is_surrounded_by_monitors___their_reflections_displaying_scrolling_text___data.jpg" alt="Cost Optimization">
+              <div class="flipbook-nav"></div>
+            </div>
+          </div>
+        </div>
+        <div id="flipbook-page-10" class="flipbook-page">
+          <div class="left-content">
+            <div class="flipbook-page-number">10</div>
+            <h2 class="flipbook-tagline">Enhanced Compliance</h2>
+            <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B8667ea3c-ddb6-4706-8118-772d192bfb81%7D_Visual_Disability_2.png" class="flipbook-icon" alt="Icon">
+          </div>
+          <div class="right-image">
+            <div class="image-nav-wrapper">
+              <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B7644206d-13fd-44d6-803b-320d96e4a8ec%7D_luca-nicoletti-6AtY-PHVo7Q-unsplash_B.jpg" alt="Enhanced Compliance">
+              <div class="flipbook-nav"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pt-page dark-text-slide content-padded-left" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B04db232f-4f52-4f8d-af88-2d3d7cbeb52f%7D_1920_x_1080_Transparent_violet_left_gradient.png');">
+    <div class="slide-content-wrapper">
+        <div class="testimonial-grid-v2">
+            <div class="testimonial-quote-v2">
+                <p>"With Outpayce B2B Wallet we can access a wide range of payment methods in any currency so we can pay suppliers quickly and easily. We don’t need to spend time reconciling payments to bookings and suppliers don’t need to wait 30 days to receive payment."</p>
+                <div class="author-info">
+                    <span>Bayo Adedeji, Group CEO, Wakanow</span>
+                    <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B3948e658-23b0-4f36-8a75-101188365261%7D_Wakanow.png" alt="Wakanow Logo">
+                </div>
+            </div>
+            <div class="testimonial-quote-v2">
+                <p>"We are getting much improved acceptance rates from Outpayce, and this makes our virtual card strategy visible on a global scale."</p>
+                <div class="author-info">
+                    <span>Fredrik Ekstrand, Head of Business Development and Supplier Relations, Sembo Group</span>
+                    <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B123869a1-574a-4e3f-80d4-142512f5a6fd%7D_Sembo.png" alt="Sembo Group Logo">
+                </div>
+            </div>
+            <div class="testimonial-quote-v2">
+                <p>"We've been using Outpayce B2B Wallet for many years. B2B Wallet has helped us reconcile flight tickets in a simpler way, resulting in extra profit and an increase in our overall financial results"</p>
+                <div class="author-info">
+                    <span>Carsten Lindholm Pedersen, Chief Executive Officer, BilletKontoret</span>
+                    <img src="https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Be96c8d48-8e68-450f-a78b-577774bd425f%7D_Billetkontoret.png" alt="BilletKontoret Logo">
+                </div>
+            </div>
+            <div class="testimonial-videos-v2">
+                <div class="video-placeholder">
+                    <img src="https://placehold.co/600x338/000000/FFFFFF?text=Testimonial+from+Fredrik" alt="Video Testimonial 1">
+                </div>
+                <div class="video-placeholder">
+                    <img src="https://placehold.co/600x338/000000/FFFFFF?text=Testimonial+from+Carsten" alt="Video Testimonial 2">
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="pt-page section-intro-page" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B8a9ed5c6-4baa-44be-bf54-53bc5949e87f%7D_1920_x_1080_Crimson.png');">
+    <div class="section-intro-box" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B8a9ed5c6-4baa-44be-bf54-53bc5949e87f%7D_1920_x_1080_Crimson.png');">
+      <h1 class="allow-wrap">How We Achieve Success</h1>
+    </div>
+  </div>
+
+  <div class="pt-page dark-text-slide" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B64adcd45-51c8-4407-a35d-4882d31dfe86%7D_1920_x_1080_Crimson_left_gradient.png');">
+    <div class="trusted-partner-layout content-padded-left">
+        <div class="trusted-partner-heading">
+          <span>Through our</span>
+          <span class="bold-line">Trusted partner</span>
+        </div>
+        <p class="trusted-partner-subheading">We achieve success through our Trusted Partner:</p>
+        <div class="amadeus-text-logo-large">aMaDEUS</div>
+        <div class="trusted-partner-stats">
+          <div class="trusted-partner-stat-item">
+            <div class="stat-value">36+</div>
+            <div class="stat-label">years in travel</div>
+          </div>
+          <div class="trusted-partner-stat-item">
+            <div class="stat-value">$160B+</div>
+            <div class="stat-label">processed yearly</div>
+          </div>
+          <div class="trusted-partner-stat-item">
+            <div class="stat-value">400+</div>
+            <div class="stat-label">global travel customers</div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="pt-page section-intro-page" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7Bc682debc-3dcb-47a7-b88b-799a2bdd1368%7D_Smiling_receptionist_behind_the_.jpg');">
+      <div class="section-intro-box" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B8a9ed5c6-4baa-44be-bf54-53bc5949e87f%7D_1920_x_1080_Crimson.png');">
+        <h1 class="allow-wrap">How we deliver smooth payments</h1>
+      </div>
+  </div>
+
+  <div class="pt-page dark-text-slide" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B64adcd45-51c8-4407-a35d-4882d31dfe86%7D_1920_x_1080_Crimson_left_gradient.png');">
+    <div class="how-we-achieve-success-layout content-padded-left">
+      <h1 style="text-align: left;">Through delivering Smooth Payments</h1>
+      <p class="subtitle" style="text-align: left;">Our platform is built to help our customers excel in all markets with connections to 400+ acquiring banks, 6 card issuers, and all major card schemes.</p>
+      <div class="how-we-achieve-success-content">
+        <div class="how-we-achieve-success-item">
+          <span class="item-number number-1">1</span>
+          <h2>End-to-End Travel Payment Solutions</h2>
+          <p>We enable travel sellers, airlines, and hospitality providers to manage payments across the entire customer journey—booking, fulfillment, and reconciliation—while optimizing revenue and reducing friction.</p>
+        </div>
+        <div class="how-we-achieve-success-item">
+          <span class="item-number number-2">2</span>
+          <h2>Driving travel forward with next-gen payment technology</h2>
+          <p>At the core of our travel payment offering is a platform built to help our customers excel in all markets with connections to 400+ acquiring banks, 6 card issuers, and all major card schemes.</p>
+        </div>
+        <div class="how-we-achieve-success-item">
+          <span class="item-number number-3">3</span>
+          <h2>Customer-Centric Product Design</h2>
+          <p>All our products are designed to increase your revenues and reduce any frictions along the payment process.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="pt-page dark-text-slide" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B64adcd45-51c8-4407-a35d-4882d31dfe86%7D_1920_x_1080_Crimson_left_gradient.png');">
+    <div class="slide-content-wrapper content-padded-left">
+      <div class="talk-to-us-row">
+        <h1>Talk to us</h1>
+        <span class="talk-to-us-desc">Discover how we can make a difference - contact us for more info</span>
+      </div>
+      <form>
+        <div class="contact-form-grid">
+          <div class="form-field">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required>
+          </div>
+          <div class="form-field">
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required>
+          </div>
+          <div class="form-field">
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-field">
+            <label for="company">Company:</label>
+            <input type="text" id="company" name="company" required>
+          </div>
+          <div class="form-field">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+          </div>
+          <div class="form-field">
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country" required>
+          </div>
+          <div class="form-field full-width">
+            <label for="message">How can we help?</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+          </div>
+          <div class="form-field button-row">
+            <button type="submit" class="cta-button">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="pt-page dark-text-slide content-padded-left" style="background-image: url('https://img06.en25.com/EloquaImages/clients/ONEAMADEUS/%7B86e32d59-451e-4564-9ce5-414dd58bd1dd%7D_1920_x_1080_Transparent_left_gradient.png');">
+    <div class="slide-content-wrapper">
+        <h1 style="font-size: 3.5em; margin-bottom: 3rem; color: white;">Glossary of terms</h1>
+        <div class="glossary-grid">
+            <div class="glossary-item">
+                <h3>What Is a Virtual Card?</h3>
+                <p>A virtual card is a digital version of a payment card that functions like a traditional plastic card but exists only in electronic form. Here’s a breakdown of what it is and how it works, based on both internal resources and external references:</p>
+            </div>
+            <div class="glossary-item">
+                <h3>Rebate:</h3>
+                <p>Rebates are an incentive program in which a supplier offers their customers a monetary reward for reaching designated purchasing goals</p>
+            </div>
+            <div class="glossary-item">
+                <h3>Issuer:</h3>
+                <p>An issuer, also called an issuing bank, is a financial institution that gives—or issues—credit and debit cards to cardholders. Issuers give cards to account holders and work using a card cards scheme, such as Visa, Mastercard, American Express, Discover, etc.</p>
+            </div>
+            <div class="glossary-item">
+                <h3>Pre-paid provider:</h3>
+                <p>Issuer/financial institution who issues cards that require pre-funding. Funds need to be provided to a funding account before issuing cards.</p>
+            </div>
+            <div class="glossary-item">
+                <h3>A virtual card typically consists of:</h3>
+                <p>- A 16-digit card number<br>- An expiration date<br>- A CVV code<br>- A cardholder name</p>
+                <p>These details mirror those of a physical card but are generated electronically and often used for a single transaction or a specific purpose</p>
+            </div>
+             <div class="glossary-item">
+                <h3>IATA BSP:</h3>
+                <p>IATA BSP (Billing and Settlement Plan) is a global electronic billing system designed by IATA to perform and facilitate transactions and data exchange between travel agencies and airlines. It’s the standard payment method used by Travel Sellers to pay airlines and has existed since 1971.</p>
+            </div>
+        </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let slides;
+  let current = 0;
+  let isAnimating = false;
+  let isFlipbookAnimating = false;
+
+  const animEndEventNames = {
+    'WebkitAnimation' : 'webkitAnimationEnd',
+    'OAnimation' : 'oAnimationEnd',
+    'msAnimation' : 'MSAnimationEnd',
+    'animation' : 'animationend'
+  };
+  const animEndEventName = animEndEventNames[ (function() {
+    for (const name in animEndEventNames) {
+      if (typeof document.documentElement.style[name] !== 'undefined') {
+        return name;
+      }
+    }
+    return '';
+  })() ];
+
+  function updatePageCounter() {
+    const counter = document.getElementById('page-counter');
+    if (counter && slides && slides.length > 0) {
+      counter.textContent = `${current + 1} / ${slides.length}`;
+    } else if (counter) {
+      counter.textContent = "0 / 0";
+    }
+  }
+
+  function updateNavLinkHighlight() {
+    const navLinks = document.querySelectorAll('.top-nav a[data-nav-section]');
+    navLinks.forEach(link => link.classList.remove('nav-link-active'));
+
+    let activeSection = '';
+
+    if (current >= 2 && current <= 5) {
+      activeSection = 'payments-industry';
+    } else if (current >= 6 && current <= 14) {
+      activeSection = 'one-click-stay';
+    } else if (current >= 15 && current <= 17) {
+      activeSection = 'how-we-achieve-success';
+    } else if (current >= 18 && current <= 19) {
+      activeSection = 'talk-to-us';
+    }
+
+    if (activeSection) {
+      const activeLink = document.querySelector(`.top-nav a[data-nav-section="${activeSection}"]`);
+      if (activeLink) {
+        activeLink.classList.add('nav-link-active');
+      }
+    }
+  }
+
+  function showSlide(index, direction = 'next') {
+    if (isAnimating || index === current || !slides || slides.length === 0) {
+      return;
+    }
+
+    isAnimating = true;
+
+    const oldSlide = slides[current];
+    const newSlide = slides[index];
+
+    if (!oldSlide || !newSlide) {
+      console.error("Slide element not found during transition. Old Slide:", oldSlide, "New Slide:", newSlide);
+      isAnimating = false;
+      return;
+    }
+
+    newSlide.style.visibility = 'visible';
+    newSlide.classList.add('pt-page-ontop');
+    newSlide.classList.add('pt-page-current');
+
+    if (direction === 'next') {
+      newSlide.classList.add('pt-page-moveFromRight');
+      oldSlide.classList.add('pt-page-exit-left');
+    } else {
+      newSlide.classList.add('pt-page-moveFromLeft');
+      oldSlide.classList.add('pt-page-exit-right');
+    }
+
+    oldSlide.classList.remove('pt-page-current');
+
+    newSlide.addEventListener(animEndEventName, function handleNewSlideAnimationEnd() {
+      newSlide.removeEventListener(animEndEventName, handleNewSlideAnimationEnd);
+
+      oldSlide.classList.remove('pt-page-exit-left', 'pt-page-exit-right');
+      oldSlide.style.visibility = 'hidden';
+
+      newSlide.classList.remove('pt-page-moveFromRight', 'pt-page-moveFromLeft', 'pt-page-ontop');
+
+      isAnimating = false;
+    });
+
+    current = index;
+    updatePageCounter();
+    updateNavLinkHighlight();
+  }
+
+  function nextArrow() {
+    let nextIndex = current + 1;
+    if (nextIndex >= slides.length) {
+      nextIndex = 0;
+    }
+    showSlide(nextIndex, 'next');
+  }
+
+  function prevArrow() {
+    let prevIndex = current - 1;
+    if (prevIndex < 0) {
+      prevIndex = slides.length - 1;
+    }
+    showSlide(prevIndex, 'prev');
+  }
+
+  function goToSlide(index) {
+    const direction = index > current ? 'next' : 'prev';
+    showSlide(index, direction);
+  }
+
+  function unlockContent() {
+    const form = document.getElementById('unlock-form');
+    if (form && !form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
+
+    console.log("unlockContent called");
+    document.getElementById('unlock').style.display = 'none';
+
+    const ptPages = document.querySelector('.pt-pages');
+    const topNav = document.querySelector('.top-nav');
+    const navButtons = document.querySelectorAll('.nav-button');
+    const pageCounter = document.getElementById('page-counter');
+
+    console.log("Elements selected:", { ptPages, topNav, navButtons, pageCounter });
+
+    if (ptPages) ptPages.classList.add('active');
+    if (topNav) {
+      topNav.classList.add('visible');
+      console.log("topNav classList after adding visible:", topNav.classList);
+    }
+    navButtons.forEach(btn => {
+      if (btn) btn.classList.add('visible');
+    });
+    if (pageCounter) pageCounter.classList.add('visible');
+
+    localStorage.setItem('ebookUnlocked', 'true');
+
+    if (slides.length > 0) {
+      slides[0].classList.add('pt-page-current');
+      slides[0].style.visibility = 'visible';
+    } else {
+      console.error("No slides found to display after unlock.");
+    }
+    current = 0;
+    updatePageCounter();
+    updateNavLinkHighlight();
+  }
+
+  let currentFlipbookPage = 1;
+  const totalFlipbookPages = 10;
+
+  function showFlipbookPage(pageNumber) {
+    if (isFlipbookAnimating) return;
+    
+    const pageDots = document.querySelectorAll('.flipbook-nav .page-dot');
+    
+    const activePage = document.querySelector('.flipbook-page-active');
+    if (activePage && pageNumber === currentFlipbookPage) {
+        return;
+    }
+
+    isFlipbookAnimating = true;
+
+    const oldFlipbookPage = document.querySelector('.flipbook-page-active');
+    const newFlipbookPage = document.getElementById(`flipbook-page-${pageNumber}`);
+    
+    // Update dots
+    pageDots.forEach(dot => dot.classList.remove('active-dot'));
+    if (pageDots[pageNumber - 1]) {
+        pageDots[pageNumber - 1].classList.add('active-dot');
+    }
+
+    // Fade transition logic
+    if (oldFlipbookPage) {
+        oldFlipbookPage.style.transition = 'opacity 0.5s ease-in-out';
+        oldFlipbookPage.style.opacity = '0';
+        oldFlipbookPage.classList.remove('flipbook-page-active');
+    }
+
+    newFlipbookPage.style.transition = 'opacity 0.5s ease-in-out';
+    newFlipbookPage.style.opacity = '0';
+    newFlipbookPage.style.visibility = 'visible';
+    newFlipbookPage.style.zIndex = '2';
+
+    setTimeout(() => {
+        newFlipbookPage.style.opacity = '1';
+        newFlipbookPage.classList.add('flipbook-page-active');
+    }, 50);
+
+    setTimeout(() => {
+        if (oldFlipbookPage) {
+            oldFlipbookPage.style.visibility = 'hidden';
+            oldFlipbookPage.style.zIndex = '0';
+        }
+        newFlipbookPage.style.zIndex = '1';
+        currentFlipbookPage = pageNumber;
+        isFlipbookAnimating = false;
+    }, 550);
+  }
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    slides = document.querySelectorAll('.pt-page');
+
+    if (localStorage.getItem('ebookUnlocked') === 'true') {
+        unlockContent();
+    }
+
+    window.unlockContent = unlockContent;
+    window.nextArrow = nextArrow;
+    window.prevArrow = prevArrow;
+    window.goToSlide = goToSlide;
+    window.showFlipbookPage = showFlipbookPage;
+    window.closeBenefitOverlay = closeBenefitOverlay;
+
+    document.addEventListener('keydown', (event) => {
+      if (document.getElementById('unlock').style.display === 'none') {
+        if (event.key === 'ArrowRight') {
+          if (current === 14) {
+            let nextFlipbookPage = currentFlipbookPage + 1;
+            if (nextFlipbookPage > totalFlipbookPages) {
+              nextFlipbookPage = 1;
+            }
+            showFlipbookPage(nextFlipbookPage);
+          } else {
+            nextArrow();
+          }
+        } else if (event.key === 'ArrowLeft') {
+          if (current === 14) {
+            let prevFlipbookPage = currentFlipbookPage - 1;
+            if (prevFlipbookPage < 1) {
+              prevFlipbookPage = totalFlipbookPages;
+            }
+            showFlipbookPage(prevFlipbookPage);
+          } else {
+            prevArrow();
+          }
+        }
+      }
+    });
+
+    const benefitHeaders = document.querySelectorAll('.benefit-header');
+    const overlayContent = document.querySelector('.benefit-overlay-content');
+    const overlayTitle = document.getElementById('overlay-title');
+    const overlayText = document.getElementById('overlay-text');
+    const closeButton = document.querySelector('.benefit-overlay-content .close-button');
+
+    benefitHeaders.forEach(header => {
+      header.addEventListener('click', () => {
+        const benefitItem = header.closest('.benefit-item');
+        const title = header.querySelector('.benefit-title').textContent;
+        const content = benefitItem.querySelector('.benefit-content-hidden').innerHTML;
+        const headerBgColor = window.getComputedStyle(header).backgroundColor;
+
+        overlayTitle.textContent = title;
+        overlayText.innerHTML = content;
+        overlayContent.style.backgroundColor = headerBgColor;
+
+        overlayContent.classList.add('active');
+      });
+    });
+
+    function closeBenefitOverlay() {
+      overlayContent.classList.remove('active');
+    }
+
+    closeButton.addEventListener('click', closeBenefitOverlay);
+    
+    // Initialize Flipbook
+    const flipbookNavContainers = document.querySelectorAll('.flipbook-nav');
+    flipbookNavContainers.forEach(nav => {
+        nav.innerHTML = ''; // Clear existing dots
+        for (let i = 0; i < totalFlipbookPages; i++) {
+            const dot = document.createElement('span');
+            dot.classList.add('page-dot');
+            dot.textContent = i + 1;
+            if (i === 0) {
+                dot.classList.add('active-dot');
+            }
+            dot.addEventListener('click', () => showFlipbookPage(i + 1));
+            nav.appendChild(dot);
+        }
+    });
+    
+    // Show the first page by default without animation
+    if (document.querySelector('.flipbook-container')) {
+      const firstPage = document.getElementById('flipbook-page-1');
+      if (firstPage) {
+        firstPage.style.transition = 'none';
+        firstPage.style.visibility = 'visible';
+        firstPage.style.opacity = '1';
+        firstPage.classList.add('flipbook-page-active');
+      }
+    }
+
+
+    updatePageCounter();
+    updateNavLinkHighlight();
+  });
+</script>
+</body>
+</html>
